@@ -14,6 +14,7 @@ import com.poly.lmsapp.R;
 public class ChooseActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnLogin, btnRegister;
 
+//bay gio dang ơ nhanh cua ninh, t thu commit vs push nhé oke baby
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
