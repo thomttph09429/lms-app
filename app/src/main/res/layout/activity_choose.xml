@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:padding="@dimen/_15sdp"
+    android:background="@drawable/bg_gradient"
+    android:orientation="vertical"
+    tools:context=".ui.activity.ChooseActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:background="@drawable/bg_border"
+        android:padding="@dimen/_10sdp"
+        android:src="@drawable/ic_logo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:fontFamily="@font/futuramedium"
+        android:gravity="center"
+        android:text="T E C H F D"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20sdp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:fontFamily="@font/futuramedium"
+        android:gravity="center"
+        android:text="F P T  P O L Y T E C H N I C"
+        android:textColor="@color/text_title"
+        android:textSize="@dimen/_20sdp" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:textAllCaps="false"
+        android:layout_marginTop="@dimen/_150sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_tranparent"
+        android:text="Đăng nhập"
+        android:textColor="@color/color_end" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="Hoặc"
+        android:textColor="@color/white" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+
+            android:id="@+id/left"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray" />
+
+        <View
+            android:layout_marginLeft="@dimen/_60sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_toRightOf="@+id/left"
+            android:background="@color/gray" />
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/btn_login_signup"
+        android:text="Đăng Ký"
+        android:textColor="@color/white" />
+
+</LinearLayout>
