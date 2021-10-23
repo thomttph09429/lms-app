@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/bg_border.xml" value="0.14290540540540542" />
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/bg_gradient.xml" value="0.14290540540540542" />
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/bg_splash.xml" value="0.14290540540540542" />
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/btn_click.xml" value="0.14290540540540542" />
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/btn_default.xml" value="0.14290540540540542" />
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/btn_login_signup.xml" value="0.1414715719063545" />
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/btn_tranparent.xml" value="0.14290540540540542" />
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/android/duan_fpoly/app/src/main/res/layout/activity_login.xml" value="0.16" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
