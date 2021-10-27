@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/bg_border.xml" value="0.14290540540540542" />
         <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/bg_gradient.xml" value="0.14290540540540542" />
         <entry key="..\:/android/duan_fpoly/app/src/main/res/drawable/bg_splash.xml" value="0.14290540540540542" />
@@ -16,6 +17,27 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+=======
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable/bg_border.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable/bg_gradient.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable/bg_splash.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable/btn_click.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable/btn_default.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable/btn_login_signup.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable/btn_tranparent.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/layout/activity_choose.xml" value="0.3625" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/layout/activity_home.xml" value="0.28940217391304346" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/layout/activity_login.xml" value="0.28940217391304346" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/layout/activity_main.xml" value="0.28940217391304346" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/DUCHUY/Documents/GitHub/lms-app/app/src/main/res/layout/activity_splash.xml" value="0.28940217391304346" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+>>>>>>> e61c4b5eca484dc23e0be29a8ab7fcb2b707902e
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
