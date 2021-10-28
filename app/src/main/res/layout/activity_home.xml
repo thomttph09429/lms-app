@@ -13,24 +13,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
         <ImageView
-            android:src="@drawable/ic_home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:src="@drawable/home_icon"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"/>
         <TextView
-            android:textSize="23dp"
-            android:layout_marginLeft="10dp"
+            android:textColor="@color/black_text"
+            android:textSize="@dimen/_23sdp"
+            android:layout_marginLeft="@dimen/_25sdp"
             android:textStyle="bold"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:text="Repository"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <LinearLayout
+        android:background="@drawable/bg_home"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="vertical">
         <ImageView
+
             android:layout_marginTop="30dp"
             android:layout_marginLeft="40dp"
             android:src="@drawable/tree_icon"
@@ -48,6 +51,7 @@
 
     </LinearLayout>
     <LinearLayout
+        android:background="@drawable/bg_home"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
