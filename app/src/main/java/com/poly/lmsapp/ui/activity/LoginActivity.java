@@ -19,10 +19,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Client.service.getTestApi().enqueue(new Callback<Test>() {
+        Client.getInstance().getTestApi().enqueue(new Callback<Test>() {
             @Override
             public void onResponse(Call<Test> call, Response<Test> response) {
-                Log.d("AAAAAAAAAa", "onResponse: " + response.body().getText().toString());
             }
 
             @Override
