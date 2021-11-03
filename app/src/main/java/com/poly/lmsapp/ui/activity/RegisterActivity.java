@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.poly.lmsapp.R;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView btnDangNhap;
     private EditText edtName, edtPassword, edtRePassWord, edtEmail;
@@ -23,10 +23,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        initViews();
         initActions();
-
-
+        initViews();
     }
 
     private void initViews() {
@@ -46,9 +44,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnDangKy:
-                startActivity(new Intent(this,LoginActivity.class));
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.btnDangNhap:
 
