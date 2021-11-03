@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.btnDangNhap:
-
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
         }
     }
