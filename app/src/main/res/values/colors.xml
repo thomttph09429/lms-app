@@ -11,9 +11,12 @@
     <color name="color_mid">#E7486D</color>
     <color name="color_end">#D23077</color>
     <color name="color_bg_btn">#DE3D71</color>
-
+    <color name="black_text">#433131</color>
     <color name="gray">#EEEEEE</color>
     <color name="text_title">#F6B2BF</color>
+    <color name="color_mobile_start">#BE47D2</color>
+    <color name="color_mobile_end">#4B70E1</color>
+    <color name="color_mobile_mid">#8C59D9</color>
 
 
 </resources>
