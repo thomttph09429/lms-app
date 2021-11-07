@@ -22,7 +22,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void createView() {
-        setShowLoading(View.VISIBLE);
+        setShowLoading(View.GONE);
         setToolbarTitle("Đăng ký");
         initActions();
         initViews();
