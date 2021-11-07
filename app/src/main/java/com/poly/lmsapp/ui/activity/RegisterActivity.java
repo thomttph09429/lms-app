@@ -1,5 +1,7 @@
 package com.poly.lmsapp.ui.activity;
 
+import android.os.Handler;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
@@ -11,18 +13,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import com.poly.lmsapp.R;
+import com.poly.lmsapp.commons.utils.BaseActivity;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
     TextView btnDangNhap;
     private EditText edtName, edtPassword, edtRePassWord, edtEmail;
     Button btnDangKy;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void setLayout() {
         setContentView(R.layout.activity_register);
+    }
+
+    @Override
+    public void createView() {
+        setShowLoading(View.VISIBLE);
+        setToolbarTitle("Đăng ký");
         initActions();
         initViews();
     }
@@ -39,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edtPassword = findViewById(R.id.edtPassword);
         edtRePassWord = findViewById(R.id.edtRePassword);
         btnDangKy = findViewById(R.id.btnDangKy);
+
     }
 
 
@@ -53,4 +63,5 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
+
 }
