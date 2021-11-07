@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">lmsApp</string>
+    <string name="app_name">LMS</string>
     <string name="base_url">https://technfd.herokuapp.com/api</string>
 
 
