@@ -1,24 +1,26 @@
 package com.poly.lmsapp.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
 
 import com.poly.lmsapp.R;
+import com.poly.lmsapp.commons.base.BaseActivity;
+import com.poly.lmsapp.ui.quiz.QuizActivity;
 
 
-public class ChooseActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChooseActivity extends BaseActivity implements View.OnClickListener {
     private Button btnLogin, btnRegister;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void setLayout() {
         setContentView(R.layout.activity_choose);
+    }
+
+    @Override
+    public void createView() {
         initViews();
         initActions();
     }
@@ -38,17 +40,13 @@ public class ChooseActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                startActivity(new Intent(this, LoginActivity.class));
-
+                startActivity(new Intent(this, QuizActivity.class));
                 break;
             case R.id.btn_register:
                 startActivity(new Intent(this, RegisterActivity.class));
-
                 break;
             default:
                 break;
-
-
         }
 
     }

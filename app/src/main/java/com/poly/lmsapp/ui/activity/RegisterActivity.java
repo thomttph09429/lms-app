@@ -1,21 +1,13 @@
 package com.poly.lmsapp.ui.activity;
 
-import android.os.Handler;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
 import com.poly.lmsapp.R;
-import com.poly.lmsapp.commons.utils.BaseActivity;
+import com.poly.lmsapp.commons.base.BaseActivity;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 

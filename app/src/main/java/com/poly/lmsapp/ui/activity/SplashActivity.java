@@ -12,6 +12,7 @@ import android.view.WindowManager;
 
 import com.poly.lmsapp.MainActivity;
 import com.poly.lmsapp.R;
+import com.poly.lmsapp.ui.quiz.QuizActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        startActivity(new Intent(SplashActivity.this, ChooseActivity.class));
+        startActivity(new Intent(SplashActivity.this, QuizActivity.class));
         finish();
     }
 }

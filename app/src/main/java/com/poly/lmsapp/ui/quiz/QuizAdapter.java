@@ -1,32 +1,41 @@
 package com.poly.lmsapp.ui.quiz;
 
+
 import android.view.View;
-import android.view.ViewGroup;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
-public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
+import android.widget.TextView;
+import com.poly.lmsapp.R;
+import com.poly.lmsapp.commons.base.LMSAdapter;
+import com.poly.lmsapp.model.Quiz;
 
+import java.util.ArrayList;
 
-    @NonNull
-    @Override
-    public QuizViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+public class QuizAdapter extends LMSAdapter {
+    TextView tvTitle;
+    TextView tvTime;
+
+    public QuizAdapter(ArrayList listData, int layout) {
+        super(listData, layout);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
-
+    public void bindingViewHolder(BaseViewHolder holder, int position) {
+        Quiz quiz = (Quiz) getListData().get(position);
+        tvTime.setText(quiz.getTime());
+        tvTime.setText(quiz.getTitle());
     }
+
 
     @Override
-    public int getItemCount() {
-        return 0;
-    }
-}
-class  QuizViewHolder extends RecyclerView.ViewHolder{
+    public void declareViews(View view, BaseViewHolder holder) {
+        tvTitle = view.findViewById(R.id.tv_title);
+        tvTime = view.findViewById(R.id.tv_time);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-    public QuizViewHolder(@NonNull View itemView) {
-        super(itemView);
+            }
+        });
     }
+
 }

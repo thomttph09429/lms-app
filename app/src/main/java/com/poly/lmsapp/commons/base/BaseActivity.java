@@ -1,28 +1,21 @@
-package com.poly.lmsapp.commons.utils;
+package com.poly.lmsapp.commons.base;
 
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.opengl.Visibility;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.provider.CalendarContract;
-import android.util.Log;
-import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.appcompat.widget.Toolbar;
 import com.poly.lmsapp.R;
 
 public class BaseActivity extends AppCompatActivity {
-    private Toolbar toolbar;
     private TextView toolbarTitle;
     private int tbColor = -1;
     private ProgressBar loading;
+    private Drawable nav;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,17 +27,17 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void setToolBar() {
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbarTitle = findViewById(R.id.toolbar_title);
         loading = findViewById(R.id.loading);
         setSupportActionBar(toolbar);
-        if(tbColor != -1) toolbarTitle.setTextColor(tbColor);
-        if (getSupportActionBar() != null){
+        if (tbColor != -1) toolbarTitle.setTextColor(tbColor);
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setTitle("");
-            Drawable nav = toolbar.getNavigationIcon();
-            if(nav != null) {
+            nav = toolbar.getNavigationIcon();
+            if (nav != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     nav.setTint(Color.WHITE);
                 }
@@ -57,13 +50,32 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void createView() {
+        fetchData();
     }
 
     public void setToolbarTitle(String toolbarTitle) {
-        this.toolbarTitle.setText(toolbarTitle);
+        if (toolbarTitle != null)
+            this.toolbarTitle.setText(toolbarTitle);
+        else this.toolbarTitle.setText("");
     }
 
-    public  void setShowLoading(int isLoading){
-        loading.setVisibility(isLoading);
+    public void setShowLoading(int isLoading) {
+        if (loading != null)
+            loading.setVisibility(isLoading);
+    }
+
+    public void fetchData() {
+    }
+
+    public int getTbColor() {
+        return tbColor;
+    }
+
+    public void setTbColor(int tbColor) {
+        this.tbColor = tbColor;
+        if (tbColor != -1) toolbarTitle.setTextColor(tbColor);
+        if(nav != null) if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            nav.setTint(tbColor);
+        }
     }
 }
