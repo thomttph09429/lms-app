@@ -1,5 +1,6 @@
 package com.poly.lmsapp.commons.base;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ public abstract class LMSAdapter extends RecyclerView.Adapter<LMSAdapter.BaseVie
 
     private ArrayList<?> listData;
     private int layout;
+    public Context context;
 
     public LMSAdapter(ArrayList listData, int layout) {
         this.listData = listData;
@@ -25,6 +27,7 @@ public abstract class LMSAdapter extends RecyclerView.Adapter<LMSAdapter.BaseVie
     public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(layout, parent, false);
+        context = inflater.getContext();
         return new BaseViewHolder(view);
     }
 

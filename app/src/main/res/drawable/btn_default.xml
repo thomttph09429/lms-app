@@ -13,8 +13,8 @@
         android:color="@android:color/white"
         android:width="@dimen/_1sdp" />
 
-    <size
-        android:height="@dimen/_45sdp" />
+<!--    <size-->
+<!--        android:height="@dimen/_45sdp" />-->
 
 
 

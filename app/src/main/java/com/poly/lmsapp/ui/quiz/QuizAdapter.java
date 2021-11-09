@@ -1,6 +1,7 @@
 package com.poly.lmsapp.ui.quiz;
 
 
+import android.content.Intent;
 import android.view.View;
 
 import android.widget.TextView;
@@ -30,12 +31,7 @@ public class QuizAdapter extends LMSAdapter {
     public void declareViews(View view, BaseViewHolder holder) {
         tvTitle = view.findViewById(R.id.tv_title);
         tvTime = view.findViewById(R.id.tv_time);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        view.setOnClickListener(view1 -> context.startActivity(new Intent(context,QuizActivity.class)));
     }
 
 }
