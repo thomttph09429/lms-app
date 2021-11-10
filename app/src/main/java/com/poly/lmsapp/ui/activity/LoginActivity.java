@@ -19,16 +19,16 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Client.getInstance().getTestApi().enqueue(new Callback<Test>() {
-            @Override
-            public void onResponse(Call<Test> call, Response<Test> response) {
-            }
-
-            @Override
-            public void onFailure(Call<Test> call, Throwable t) {
-
-            }
-        });
+//        Client.getInstance().getTestApi().enqueue(new Callback<Test>() {
+//            @Override
+//            public void onResponse(Call<Test> call, Response<Test> response) {
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Test> call, Throwable t) {
+//
+//            }
+//        });
 
     }
 }

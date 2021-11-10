@@ -10,6 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class BaseClient {
 
@@ -29,6 +30,7 @@ public class BaseClient {
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+                .readTimeout(60, TimeUnit.SECONDS)
                 .build();
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(baseUrl)

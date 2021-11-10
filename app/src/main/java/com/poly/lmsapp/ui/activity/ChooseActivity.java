@@ -40,7 +40,7 @@ public class ChooseActivity extends BaseActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                startActivity(new Intent(this, QuizActivity.class));
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.btn_register:
                 startActivity(new Intent(this, RegisterActivity.class));
@@ -50,4 +50,5 @@ public class ChooseActivity extends BaseActivity implements View.OnClickListener
         }
 
     }
+
 }

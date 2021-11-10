@@ -1,4 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE androidx.constraintlayout.widget.ConstraintLayout [
+        <!ELEMENT androidx.constraintlayout.widget.ConstraintLayout (include|LinearLayout|TextView)*>
+        <!ATTLIST androidx.constraintlayout.widget.ConstraintLayout
+                xmlns:android CDATA #REQUIRED
+                xmlns:app CDATA #REQUIRED
+                xmlns:tools CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:layout_gravity CDATA #REQUIRED
+                android:background CDATA #REQUIRED
+                tools:context CDATA #REQUIRED>
+        <!ELEMENT include (#PCDATA)>
+        <!ATTLIST include
+                android:id CDATA #IMPLIED
+                android:translationZ CDATA #IMPLIED
+                app:layout_constraintBottom_toBottomOf CDATA #IMPLIED
+                app:layout_constraintEnd_toEndOf CDATA #REQUIRED
+                app:layout_constraintHorizontal_bias CDATA #REQUIRED
+                app:layout_constraintStart_toStartOf CDATA #REQUIRED
+                app:layout_constraintTop_toTopOf CDATA #REQUIRED
+                layout CDATA #REQUIRED>
+        <!ELEMENT LinearLayout (TextView|com.google.android.material.textfield.TextInputLayout|Button)*>
+        <!ATTLIST LinearLayout
+                android:translationZ CDATA #REQUIRED
+                android:id CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:background CDATA #REQUIRED
+                android:orientation CDATA #REQUIRED
+                android:padding CDATA #REQUIRED
+                android:layout_margin CDATA #REQUIRED
+                app:layout_constraintEnd_toEndOf CDATA #REQUIRED
+                app:layout_constraintHorizontal_bias CDATA #REQUIRED
+                app:layout_constraintStart_toStartOf CDATA #REQUIRED
+                app:layout_constraintTop_toBottomOf CDATA #REQUIRED
+                android:layout_marginTop CDATA #REQUIRED>
+        <!ELEMENT TextView (#PCDATA)>
+        <!ATTLIST TextView
+                android:fontFamily CDATA #IMPLIED
+                android:gravity CDATA #REQUIRED
+                android:id CDATA #IMPLIED
+                android:layout_height CDATA #REQUIRED
+                android:layout_marginTop CDATA #IMPLIED
+                android:layout_width CDATA #REQUIRED
+                android:text CDATA #REQUIRED
+                android:textColor CDATA #IMPLIED
+                android:textSize CDATA #IMPLIED
+                android:translationZ CDATA #IMPLIED
+                app:layout_constraintBottom_toBottomOf CDATA #IMPLIED
+                app:layout_constraintEnd_toEndOf CDATA #IMPLIED
+                app:layout_constraintHorizontal_bias CDATA #IMPLIED
+                app:layout_constraintStart_toEndOf CDATA #IMPLIED
+                app:layout_constraintStart_toStartOf CDATA #IMPLIED
+                app:layout_constraintTop_toBottomOf CDATA #IMPLIED
+                app:layout_constraintVertical_bias CDATA #IMPLIED>
+        <!ELEMENT com.google.android.material.textfield.TextInputLayout (com.google.android.material.textfield.TextInputEditText)*>
+        <!ATTLIST com.google.android.material.textfield.TextInputLayout
+                android:fontFamily CDATA #REQUIRED
+                android:hint CDATA #REQUIRED
+                android:id CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:layout_marginTop CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                app:passwordToggleEnabled CDATA #IMPLIED>
+        <!ELEMENT com.google.android.material.textfield.TextInputEditText (#PCDATA)>
+        <!ATTLIST com.google.android.material.textfield.TextInputEditText
+                android:id CDATA #REQUIRED
+                android:inputType CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                android:textSize CDATA #REQUIRED>
+        <!ELEMENT Button (#PCDATA)>
+        <!ATTLIST Button
+                android:id CDATA #REQUIRED
+                android:layout_width CDATA #REQUIRED
+                android:layout_height CDATA #REQUIRED
+                android:layout_gravity CDATA #REQUIRED
+                android:layout_margin CDATA #REQUIRED
+                android:background CDATA #REQUIRED
+                android:text CDATA #REQUIRED
+                android:translationZ CDATA #REQUIRED
+                android:textColor CDATA #REQUIRED>
+        ]>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    xmlns:tools="http://schemas.android.com/tools"
@@ -8,12 +91,16 @@
                                                    android:background="@drawable/bg_gradient"
                                                    tools:context=".ui.activity.RegisterActivity">
 
-    <include layout="@layout/appbar" android:id="@+id/include2" app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+    <include layout="@layout/appbar"
+             android:id="@+id/include2"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintHorizontal_bias="0.5"
+             app:layout_constraintEnd_toEndOf="parent"
              app:layout_constraintTop_toTopOf="parent"/>
 
 
     <LinearLayout
+            android:translationZ="0dp"
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +111,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include2" android:layout_marginTop="32dp">
+            app:layout_constraintTop_toBottomOf="@+id/include2"
+            android:layout_marginTop="32dp">
 
         <TextView
                 android:layout_width="match_parent"
@@ -35,50 +123,70 @@
                 android:text="Tạo tài khoản"
                 android:textSize="@dimen/_20sdp"/>
 
-        <EditText
-                android:id="@+id/edtName"
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtNameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10" android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/arial"
-                android:hint="Tên đăng nhập"
-                android:inputType="textPersonName"
-                android:textSize="@dimen/_10sdp"/>
+                android:hint="Tên đăng nhập">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtName"
+                    android:inputType="text"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <EditText
-                android:id="@+id/edtPassword"
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edt_password_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10" android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/arial"
                 android:hint="Nhập mật khẩu"
-                android:inputType="textPassword"
-                android:textSize="@dimen/_10sdp"/>
+                app:passwordToggleEnabled="true"
+        >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassword"
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <EditText
-                android:id="@+id/edtRePassword"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edt_re_password_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10" android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/arial"
                 android:hint="Nhập lại mật khẩu"
-                android:inputType="textPassword"
-                android:textSize="@dimen/_10sdp"/>
-
-        <EditText
-                android:id="@+id/edtEmail"
+                app:passwordToggleEnabled="true"
+        >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRePassword"
+                    android:textSize="@dimen/_10sdp"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edt_email_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10" android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/arial"
                 android:hint="Nhập email"
-                android:inputType="textPersonName"
-                android:textSize="@dimen/_10sdp"/>
-
+        >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmail"
+                    android:textSize="@dimen/_10sdp"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
                 android:id="@+id/btnDangKy"
                 android:layout_width="match_parent"
@@ -87,6 +195,8 @@
                 android:layout_margin="@dimen/_24sdp"
                 android:background="@drawable/btn_login_signup"
                 android:text="Đăng ký"
+                android:translationZ="0dp"
+
                 android:textColor="@color/white"/>
     </LinearLayout>
     <TextView
@@ -109,6 +219,7 @@
             android:layout_height="33dp"
             android:gravity="center"
             android:text="Đăng nhập"
+            android:translationZ="0dp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -116,6 +227,15 @@
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             app:layout_constraintVertical_bias="0.611"/>
+
+    <include
+            layout="@layout/loading"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:translationZ="10dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
