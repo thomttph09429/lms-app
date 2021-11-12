@@ -11,6 +11,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.LmsApp">
+        <activity android:name=".ui.semester.SemesterActivity">
+        </activity>
+        <activity android:name=".ui.change_password.ChangePasswordActivity">
+        </activity>
         <activity android:name=".ui.quiz.detail_quiz.DetailQuizActivity">
         </activity>
         <activity android:name=".ui.quiz.QuizActivity">

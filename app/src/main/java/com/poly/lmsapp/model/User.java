@@ -22,8 +22,40 @@ public class User {
     private String birth;
     @SerializedName("phoneNumber")
     private String phoneNumber;
+    @SerializedName("chuyenNganh")
+    private String chuyenNganh;
+    @SerializedName("oldPassword")
+    private String oldPassword;
+    @SerializedName("newPassword")
+    private String newPassword;
+    @SerializedName("kiHoc")
+    private String kiHoc;
     @SerializedName("permission")
     private List<Permission> permission;
+
+    public User(String oldPassword, String newPassword, String token) {
+        this.oldPassword = oldPassword;
+        this.newPassword = newPassword;
+        this.token = token;
+    }
+
+    public String getChuyenNganh() {
+        return chuyenNganh;
+    }
+
+    public void setChuyenNganh(String chuyenNganh) {
+        this.chuyenNganh = chuyenNganh;
+    }
+
+    public String getKiHoc() {
+        return kiHoc;
+    }
+
+    public void setKiHoc(String kiHoc) {
+        this.kiHoc = kiHoc;
+    }
+
+
 
     public String getAvatar() {
         return avatar;
@@ -84,6 +116,22 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 
     public String getUserName() {

@@ -64,8 +64,7 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/arial"
                 android:hint="Nhập mật khẩu"
-                app:passwordToggleEnabled="true"
-        >
+                app:passwordToggleEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtPassword"
                     android:inputType="textPassword"

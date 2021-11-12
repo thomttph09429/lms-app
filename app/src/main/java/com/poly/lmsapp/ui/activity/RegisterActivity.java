@@ -214,14 +214,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         finish();
                     } else {
                         showLoading(false);
-                        BaseDialog.showBaseDialog(RegisterActivity.this, baseResponse.getError().getMessage(), Status.ERROR);
+                        BaseDialog.showBaseDialog(RegisterActivity.this, baseResponse.getError().getMessage(), Status.ERROR,null);
                     }
                 }
 
                 @Override
                 public void onFailure(Call<BaseResponse> call, Throwable t) {
                     showLoading(false);
-                    BaseDialog.showBaseDialog(RegisterActivity.this, "Đăng ký tài khoản không thành công!", Status.ERROR);
+                    BaseDialog.showBaseDialog(RegisterActivity.this, "Đăng ký tài khoản không thành công!", Status.ERROR,null);
                 }
             });
         }

@@ -1,11 +1,17 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
-    <gradient
-        android:startColor="@color/color_end"
-        android:centerColor="@color/color_mid"
-        android:endColor="@color/color_start"
-        android:angle="90"/>
-    <corners
-        android:radius="@dimen/_20sdp"/>
+<ripple android:color="?android:colorControlHighlight"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+               android:shape="rectangle">
+            <gradient
+                    android:startColor="@color/color_end"
+                    android:centerColor="@color/color_mid"
+                    android:endColor="@color/color_start"
+                    android:angle="90"/>
+            <corners
+                    android:radius="@dimen/_20sdp"/>
 
 
-</shape>
+        </shape>
+    </item>
+</ripple>

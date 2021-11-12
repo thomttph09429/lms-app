@@ -42,6 +42,7 @@ public class BaseActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             setShowBack(true);
             getSupportActionBar().setTitle("");
+
             nav = toolbar.getNavigationIcon();
             if (nav != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -109,10 +110,15 @@ public class BaseActivity extends AppCompatActivity {
 
     public  void onFailResponse(Activity activity, String message){
         showLoading(false);
-        BaseDialog.showBaseDialog(activity, message, Status.ERROR);
+        BaseDialog.showBaseDialog(activity, message, Status.ERROR,null);
     }
     public  void onFailResponse(Activity activity){
         showLoading(false);
-        BaseDialog.showBaseDialog(activity, "Đã có lỗi xảy ra!", Status.ERROR);
+        BaseDialog.showBaseDialog(activity, "Đã có lỗi xảy ra!", Status.ERROR,null);
+    }
+
+    public void setTbDrawable(int drawable){
+        if(getSupportActionBar() != null)
+        getSupportActionBar().setBackgroundDrawable(getDrawable(drawable));
     }
 }
