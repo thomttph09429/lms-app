@@ -1,17 +1,28 @@
 package com.poly.lmsapp.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class User {
 
+    @SerializedName("_id")
     private String _id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("userName")
     private String userName;
+    @SerializedName("password")
     private String password;
+    @SerializedName("email")
     private String email;
+    @SerializedName("avatar")
     private String avatar;
+    @SerializedName("birth")
     private String birth;
+    @SerializedName("phoneNumber")
     private String phoneNumber;
+    @SerializedName("permission")
     private List<Permission> permission;
 
     public String getAvatar() {
@@ -40,6 +51,9 @@ public class User {
 
     private String token;
     private int id;
+
+    public User() {
+    }
 
     public User(String userName, String password) {
         this.userName = userName;

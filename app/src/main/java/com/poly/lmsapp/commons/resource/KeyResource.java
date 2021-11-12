@@ -1,0 +1,7 @@
+package com.poly.lmsapp.commons.resource;
+
+public class KeyResource {
+    public static final String TOKEN = "token";
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
+}

@@ -1,9 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.LoginActivity">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@drawable/bg_gradient"
+
+                                                   tools:context=".ui.activity.LoginActivity">
+    <include layout="@layout/appbar"
+             android:id="@+id/include2"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintHorizontal_bias="0.5"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <LinearLayout
+            android:translationZ="0dp"
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/_16sdp"
+            android:layout_margin="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include2"
+            android:layout_marginTop="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.265">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:fontFamily="@font/arial_bold"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="Đăng nhập"
+                android:textSize="@dimen/_20sdp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtUserNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/arial"
+                android:hint="Tên đăng nhập">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtUserName"
+                    android:inputType="text"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtPasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/arial"
+                android:hint="Nhập mật khẩu"
+                app:passwordToggleEnabled="true"
+        >
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassword"
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+                android:id="@+id/btnDangNhap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_24sdp"
+                android:background="@drawable/btn_login_signup"
+                android:text="Đăng nhập"
+                android:translationZ="0dp"
+
+                android:textColor="@color/white"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp">
+        <TextView
+                android:id="@+id/textView2"
+                android:layout_weight="1.5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textStyle="bold"
+                android:paddingVertical="@dimen/_8sdp"
+                android:text="Bạn chưa có tài khoản?"
+                android:textColor="@color/white16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintVertical_bias="0.61"
+                app:layout_constraintEnd_toStartOf="@+id/btnDoiDangNhap"
+                android:layout_marginStart="8dp"/>
+        <View android:layout_width="@dimen/_16sdp"
+              android:layout_height="0dp"/>
+        <TextView
+                android:id="@+id/btnDoiDangNhap"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:text="Đăng ký"
+                android:translationZ="0dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintVertical_bias="0.611"
+                android:layout_marginEnd="8dp"/>
+    </LinearLayout>
+
+
+    <include
+            layout="@layout/loading"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:translationZ="10dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

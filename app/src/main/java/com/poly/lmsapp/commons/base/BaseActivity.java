@@ -1,25 +1,27 @@
 package com.poly.lmsapp.commons.base;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.poly.lmsapp.R;
+import com.poly.lmsapp.commons.utils.Status;
+import com.poly.lmsapp.ui.activity.LoginActivity;
 
 public class BaseActivity extends AppCompatActivity {
     private TextView toolbarTitle;
     private int tbColor = -1;
-    private ProgressBar loading;
     private ConstraintLayout parentLoading;
     private Drawable nav;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,13 +35,12 @@ public class BaseActivity extends AppCompatActivity {
     private void setToolBar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbarTitle = findViewById(R.id.toolbar_title);
-        loading = findViewById(R.id.loading);
         parentLoading = findViewById(R.id.parent_loading);
+        showLoading(false);
         setSupportActionBar(toolbar);
         if (tbColor != -1) toolbarTitle.setTextColor(tbColor);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            setShowBack(true);
             getSupportActionBar().setTitle("");
             nav = toolbar.getNavigationIcon();
             if (nav != null) {
@@ -96,5 +97,22 @@ public class BaseActivity extends AppCompatActivity {
             if (parentLoading.getVisibility() == View.VISIBLE)
                 return true;
         return super.dispatchTouchEvent(ev);
+    }
+
+   public void setShowBack(boolean isShow){
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(isShow);
+            getSupportActionBar().setDisplayShowHomeEnabled(isShow);
+        }
+
+    }
+
+    public  void onFailResponse(Activity activity, String message){
+        showLoading(false);
+        BaseDialog.showBaseDialog(activity, message, Status.ERROR);
+    }
+    public  void onFailResponse(Activity activity){
+        showLoading(false);
+        BaseDialog.showBaseDialog(activity, "Đã có lỗi xảy ra!", Status.ERROR);
     }
 }

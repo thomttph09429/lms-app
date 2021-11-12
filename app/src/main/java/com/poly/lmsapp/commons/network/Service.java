@@ -10,10 +10,13 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface Service {
-    @POST("/login")
+    @POST("/api/login")
     Call<BaseResponse> login(@Body User o);
 
-@POST("api/register")
+    @POST("api/register")
     Call<BaseResponse> signUp(@Body User o);
+
+@GET("api/get_repository")
+    Call<BaseResponse> getRepository();
 
 }
