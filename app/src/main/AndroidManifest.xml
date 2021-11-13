@@ -11,6 +11,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.LmsApp">
+        <activity android:name=".ui.subject.SubjectActivity">
+        </activity>
         <activity android:name=".ui.semester.SemesterActivity">
         </activity>
         <activity android:name=".ui.change_password.ChangePasswordActivity">
@@ -20,6 +22,7 @@
         <activity android:name=".ui.quiz.QuizActivity">
         </activity>
         <activity android:name=".ui.activity.ChooseActivity"/>
+        <activity android:name=".ui.department.NganhHKHL_Activity"/>
         <activity android:name=".ui.home.HomeActivity"/>
         <activity android:name=".ui.activity.LoginActivity"/>
         <activity android:name=".ui.activity.RegisterActivity"/>

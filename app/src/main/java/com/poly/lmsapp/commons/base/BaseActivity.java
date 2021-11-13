@@ -21,6 +21,7 @@ public class BaseActivity extends AppCompatActivity {
     private int tbColor = -1;
     private ConstraintLayout parentLoading;
     private Drawable nav;
+    private  boolean isRefreshing = false;
 
 
     @Override
@@ -120,5 +121,17 @@ public class BaseActivity extends AppCompatActivity {
     public void setTbDrawable(int drawable){
         if(getSupportActionBar() != null)
         getSupportActionBar().setBackgroundDrawable(getDrawable(drawable));
+    }
+    public  void refreshData(){
+        isRefreshing = true;
+        fetchData();
+    }
+
+    public void setRefreshing(boolean refreshing) {
+        isRefreshing = refreshing;
+    }
+
+    public boolean isRefreshing() {
+        return isRefreshing;
     }
 }

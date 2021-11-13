@@ -31,4 +31,7 @@ public interface Service {
     @GET("api/semester")
     Call<BaseResponse> getAllSemester(@QueryMap Map<String, Object> map);
 
+ @GET("api/get_all_departments")
+    Call<BaseResponse> getAllDepartment(@QueryMap Map<String, Object> map);
+
 }
