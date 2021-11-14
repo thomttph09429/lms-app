@@ -1,7 +1,5 @@
-package com.poly.lmsapp.ui.quiz.detail_quiz;
+package com.poly.lmsapp.ui.detail_doc.detail_quiz;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.BaseActivity;
 

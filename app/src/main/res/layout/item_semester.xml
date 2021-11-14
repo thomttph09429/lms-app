@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:id="@+id/container"   android:clickable="true"
+        android:id="@+id/container"
+        android:clickable="true"
         android:focusable="true"
         android:background="?android:attr/selectableItemBackground"
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content">
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-android:textColor="@color/black"
+              android:textColor="@color/black"
               android:textSize="@dimen/_16sdp"
               android:text="Kỳ học"
               app:layout_constraintStart_toStartOf="parent"

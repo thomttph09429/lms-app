@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.BaseActivity;
-import com.poly.lmsapp.ui.quiz.QuizActivity;
 
 
 public class ChooseActivity extends BaseActivity implements View.OnClickListener {

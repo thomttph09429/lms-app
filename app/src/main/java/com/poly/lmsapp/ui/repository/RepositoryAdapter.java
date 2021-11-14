@@ -42,7 +42,7 @@ public class RepositoryAdapter extends LMSAdapter {
         mContainer.setOnClickListener(view -> {
             Intent intent = new Intent(context, SemesterActivity.class);
             intent.putExtra(KeyResource.ID_REPOSITORY, repository.getId());
-            Log.d("aaaaaaaaaaaaaaaa", "bindingViewHolder: ");
+            intent.putExtra(KeyResource.NAME_REPOSITORY, repository.getTitle());
             context.startActivity(intent);
         });
     }

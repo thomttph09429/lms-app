@@ -31,7 +31,25 @@ public interface Service {
     @GET("api/semester")
     Call<BaseResponse> getAllSemester(@QueryMap Map<String, Object> map);
 
- @GET("api/get_all_departments")
+    @GET("api/get_all_departments")
     Call<BaseResponse> getAllDepartment(@QueryMap Map<String, Object> map);
+
+    @GET("api/get_subjects")
+    Call<BaseResponse> getAllSubject(@QueryMap Map<String, Object> map);
+
+    @GET("api/get_all_class")
+    Call<BaseResponse> getAllClass(@QueryMap Map<String, Object> map);
+
+    @GET("api/document_types")
+    Call<BaseResponse> getAllDocuments(@QueryMap Map<String, Object> map);
+
+    @GET("api/get_all_assigments")
+    Call<BaseResponse> getAllAssignment(@QueryMap Map<String, Object> map);
+
+ @GET("api/get_all_labs")
+    Call<BaseResponse> getAllLab(@QueryMap Map<String, Object> map);
+
+@GET("api/get_all_quiz")
+    Call<BaseResponse> getAllQuiz(@QueryMap Map<String, Object> map);
 
 }

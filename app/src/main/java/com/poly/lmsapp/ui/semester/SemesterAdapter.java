@@ -42,6 +42,7 @@ public class SemesterAdapter extends LMSAdapter {
         mContainer.setOnClickListener(view -> {
             Intent intent = new Intent(context, NganhHKHL_Activity.class);
             intent.putExtra(KeyResource.ID_SEMESTER, semester.getId());
+            intent.putExtra(KeyResource.NAME_SEMESTER, semester.getName());
             context.startActivity(intent);
 
         });

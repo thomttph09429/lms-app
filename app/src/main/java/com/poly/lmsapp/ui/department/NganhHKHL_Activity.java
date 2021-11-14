@@ -1,5 +1,6 @@
 package com.poly.lmsapp.ui.department;
 
+import android.content.Intent;
 import android.os.Build;
 import android.view.View;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class NganhHKHL_Activity extends BaseActivity {
     private TextView mTvNoData;
     private SwipeRefreshLayout mSpRefresh;
     private ArrayList<Department> listData = new ArrayList<>();
+    private Intent intent;
 
     @Override
     public void setLayout() {
@@ -39,7 +41,8 @@ public class NganhHKHL_Activity extends BaseActivity {
 
     @Override
     public void createView() {
-        setToolbarTitle("");
+        intent = getIntent();
+        setToolbarTitle(intent.getStringExtra(KeyResource.NAME_SEMESTER));
         setTbDrawable(R.drawable.bg_gradient);
         initView();
         fetchData();
@@ -58,7 +61,7 @@ public class NganhHKHL_Activity extends BaseActivity {
     @Override
     public void fetchData() {
         Map<String, Object> map = new HashMap<>();
-        map.put(KeyResource.ID_SEMESTER, 5);
+        map.put(KeyResource.ID_SEMESTER, intent.getIntExtra(KeyResource.ID_SEMESTER,-1));
         Client.getInstance().getAllDepartment(map).enqueue(new Callback<BaseResponse>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
