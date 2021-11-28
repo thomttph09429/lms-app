@@ -1,6 +1,9 @@
 package com.poly.lmsapp.model;
 
-public class ClassModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ClassModel implements Parcelable {
     private String _id;
     private String name;
     private String description;
@@ -12,6 +15,29 @@ public class ClassModel {
 
     public ClassModel() {
     }
+
+    protected ClassModel(Parcel in) {
+        _id = in.readString();
+        name = in.readString();
+        description = in.readString();
+        idSubject = in.readInt();
+        createAt = in.readString();
+        createBy = in.readParcelable(User.class.getClassLoader());
+        id = in.readInt();
+        __v = in.readInt();
+    }
+
+    public static final Creator<ClassModel> CREATOR = new Creator<ClassModel>() {
+        @Override
+        public ClassModel createFromParcel(Parcel in) {
+            return new ClassModel(in);
+        }
+
+        @Override
+        public ClassModel[] newArray(int size) {
+            return new ClassModel[size];
+        }
+    };
 
     public String get_id() {
         return _id;
@@ -75,5 +101,22 @@ public class ClassModel {
 
     public void set__v(int __v) {
         this.__v = __v;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(_id);
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeInt(idSubject);
+        parcel.writeString(createAt);
+        parcel.writeParcelable(createBy, i);
+        parcel.writeInt(id);
+        parcel.writeInt(__v);
     }
 }

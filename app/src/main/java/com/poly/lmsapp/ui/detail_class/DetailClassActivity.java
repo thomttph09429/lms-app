@@ -61,24 +61,46 @@ public class DetailClassActivity extends BaseActivity {
 
     @Override
     public void fetchData() {
-        Map<String,Object> map = new HashMap<>();
-        map.put(KeyResource.ID_CLASS,intent.getIntExtra(KeyResource.ID_CLASS,-1));
+        Map<String, Object> map = new HashMap<>();
+        map.put(KeyResource.ID_GROUP_TYPE, intent.getIntExtra(KeyResource.ID_GROUP_TYPE, -1));
         Client.getInstance().getAllDocuments(map).enqueue(new Callback<BaseResponse>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 BaseResponse baseResponse = response.body();
-                if(baseResponse != null && baseResponse.getError().getCode() == 0){
-                    if(isRefreshing()) listData.clear();
-                    BasePageResponse basePageResponse = (BasePageResponse) Utils.jsonDecode(baseResponse.getData(),BasePageResponse.class);
-                    basePageResponse.getData().forEach(o -> listData.add((Document) Utils.jsonDecode(o,Document.class)));
-                    DetailClassAdapter classAdapter = new DetailClassAdapter(listData,R.layout.item_subject);
-                    mRvDetailClass.addItemDecoration(new DividerItemDecoration(DetailClassActivity.this,DividerItemDecoration.VERTICAL));
+                if (baseResponse != null && baseResponse.getError().getCode() == 0) {
+                    if (isRefreshing()) listData.clear();
+                    BasePageResponse basePageResponse = (BasePageResponse) Utils.jsonDecode(baseResponse.getData(), BasePageResponse.class);
+                    basePageResponse.getData().forEach(o -> listData.add((Document) Utils.jsonDecode(o, Document.class)));
+                    DetailClassAdapter classAdapter = new DetailClassAdapter(listData, R.layout.item_subject);
+                    mRvDetailClass.addItemDecoration(new DividerItemDecoration(DetailClassActivity.this, DividerItemDecoration.VERTICAL));
                     mRvDetailClass.setAdapter(classAdapter);
-                    if(listData.size() == 0) mTvNoData.setVisibility(View.VISIBLE);
+                    if (listData.size() == 0) mTvNoData.setVisibility(View.VISIBLE);
                     else mTvNoData.setVisibility(View.GONE);
 
-                }else onFailResponse(DetailClassActivity.this,baseResponse.getError().getMessage());
+                } else onFailResponse(DetailClassActivity.this, baseResponse.getError().getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                onFailResponse(DetailClassActivity.this);
+            }
+        });
+        Client.getInstance().getListFileSystem(map).enqueue(new Callback<BaseResponse>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                BaseResponse baseResponse = response.body();
+                if (baseResponse != null && baseResponse.getError().getCode() == 0) {
+                    BasePageResponse basePageResponse = (BasePageResponse) Utils.jsonDecode(baseResponse.getData(), BasePageResponse.class);
+                    basePageResponse.getData().forEach(o -> listData.add((Document) Utils.jsonDecode(o, Document.class)));
+                    DetailClassAdapter classAdapter = new DetailClassAdapter(listData, R.layout.item_subject);
+                    mRvDetailClass.addItemDecoration(new DividerItemDecoration(DetailClassActivity.this, DividerItemDecoration.VERTICAL));
+                    mRvDetailClass.setAdapter(classAdapter);
+                    if (listData.size() == 0) mTvNoData.setVisibility(View.VISIBLE);
+                    else mTvNoData.setVisibility(View.GONE);
+
+                } else onFailResponse(DetailClassActivity.this, baseResponse.getError().getMessage());
             }
 
             @Override

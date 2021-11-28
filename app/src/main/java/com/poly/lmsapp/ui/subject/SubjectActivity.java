@@ -69,7 +69,7 @@ public class SubjectActivity extends BaseActivity {
                     if(listData.size() ==0) mTvNoData.setVisibility(View.VISIBLE);
                     else mTvNoData.setVisibility(View.GONE);
                     SubjectAdapter subjectAdapter = new SubjectAdapter(listData, R.layout.item_subject);
-                    mRvSubject.addItemDecoration(new DividerItemDecoration(SubjectActivity.this, DividerItemDecoration.VERTICAL));
+//                    mRvSubject.addItemDecoration(new DividerItemDecoration(SubjectActivity.this, DividerItemDecoration.VERTICAL));
                     mRvSubject.setAdapter(subjectAdapter);
                 } else {
                     onFailResponse(SubjectActivity.this, baseResponse.getError().getMessage());

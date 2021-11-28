@@ -6,13 +6,33 @@ public class Assignment {
     private String content;
     private int documentId;
     private String startTime;
+    private String link;
     private String endTime;
+    private String type;
     private String createdAt;
+    private String timeFinish;
+    private String statusWork;
     private int createdBy;
     private int id;
     private int __v;
 
     public Assignment() {
+    }
+
+    public String getTimeFinish() {
+        return timeFinish;
+    }
+
+    public void setTimeFinish(String timeFinish) {
+        this.timeFinish = timeFinish;
+    }
+
+    public String getStatusWork() {
+        return statusWork;
+    }
+
+    public void setStatusWork(String statusWork) {
+        this.statusWork = statusWork;
     }
 
     public String get_id() {
@@ -91,7 +111,24 @@ public class Assignment {
         return __v;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public void set__v(int __v) {
+
         this.__v = __v;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

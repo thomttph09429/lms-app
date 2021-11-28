@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseClient {
 
-
     static <S> S createService(Class<S> serviceClass, String baseUrl) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
@@ -27,9 +26,7 @@ public class BaseClient {
                         return chain.proceed(requestBuilder);
                     }
                 })
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS))
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+                .addInterceptor(new HttpLoggingInterceptor(new ApiLogger()).setLevel(HttpLoggingInterceptor.Level.BODY))
                 .readTimeout(60, TimeUnit.SECONDS)
                 .build();
         Retrofit.Builder builder = new Retrofit.Builder()

@@ -1,12 +1,10 @@
-package com.poly.lmsapp.ui.repository;
+package com.poly.lmsapp.ui.home.repository;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.cardview.widget.CardView;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.LMSAdapter;
 import com.poly.lmsapp.commons.resource.KeyResource;

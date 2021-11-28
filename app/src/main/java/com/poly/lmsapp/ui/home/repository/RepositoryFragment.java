@@ -1,8 +1,10 @@
-package com.poly.lmsapp.ui.repository;
+package com.poly.lmsapp.ui.home.repository;
 
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -12,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
-import com.poly.lmsapp.MainActivity;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.BaseDialog;
 import com.poly.lmsapp.commons.network.Client;
@@ -30,31 +31,52 @@ import java.util.ArrayList;
 public class RepositoryFragment extends Fragment {
     private RecyclerView mRvRepository;
     private ConstraintLayout parentLoading;
-    static  RepositoryFragment repositoryFragment;
+    private static RepositoryFragment repositoryFragment;
+    private Button mBtnClickTest;
+    private Button mBtnClickTestFile;
+    private ImageView mIvPicked;
+    private static  Bundle bundle;
+    RepositoryAdapter homeAdapter;
+    ArrayList<Repository> listData = new ArrayList<>();
 
-    public  static RepositoryFragment getInstance(){
-        if(repositoryFragment == null) repositoryFragment = new RepositoryFragment();
-        return  repositoryFragment;
+    public static RepositoryFragment getInstance() {
+        if (repositoryFragment == null) repositoryFragment = new RepositoryFragment();
+        return repositoryFragment;
     }
-
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onDestroyView() {
+        super.onDestroyView();
+        if(bundle == null)
+        bundle = new Bundle();
+        bundle.putParcelableArrayList("saveInstanceRepo", listData);
 
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_repository, container, false);
+        View view = inflater.inflate(R.layout.fragment_repository, container, false);
+        parentLoading = view.findViewById(R.id.parent_loading);
+        mRvRepository = view.findViewById(R.id.rv_repository);
+        mBtnClickTest = view.findViewById(R.id.btn_click_test);
+        mBtnClickTestFile = view.findViewById(R.id.btn_click_test_file);
+        mIvPicked = view.findViewById(R.id.iv_picked);
+        if (bundle != null) {
+            showLoading(false);
+            listData = bundle.getParcelableArrayList("saveInstanceRepo");
+            if(homeAdapter == null)
+            homeAdapter = new RepositoryAdapter(listData, R.layout.item_respository);
+            mRvRepository.setAdapter(homeAdapter);
+        }
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        parentLoading = view.findViewById(R.id.parent_loading);
-        mRvRepository = view.findViewById(R.id.rv_repository);
-        fetchData();
+        super.onViewCreated(view, savedInstanceState);
+        if (bundle == null) {
+            fetchData();
+        }
     }
 
 
@@ -68,7 +90,7 @@ public class RepositoryFragment extends Fragment {
                 showLoading(false);
                 if (baseResponse != null && baseResponse.getError().getCode() == 0) {
                     BasePageResponse pageResponse = (BasePageResponse) Utils.jsonDecode(baseResponse.getData(), BasePageResponse.class);
-                    ArrayList<Repository> listData = new ArrayList<>();
+
                     pageResponse.getData().forEach(o ->
                             listData.add((Repository) Utils.jsonDecode(o, Repository.class))
                     );
@@ -97,11 +119,11 @@ public class RepositoryFragment extends Fragment {
 
     private void onFailResponse(Activity activity, String message) {
         showLoading(false);
-        BaseDialog.showBaseDialog(activity, message, Status.ERROR,null);
+        BaseDialog.showBaseDialog(activity, message, Status.ERROR, null);
     }
 
     private void onFailResponse(Activity activity) {
         showLoading(false);
-        BaseDialog.showBaseDialog(activity, "Đã có lỗi xảy ra!", Status.ERROR,null);
+        BaseDialog.showBaseDialog(activity, "Đã có lỗi xảy ra!", Status.ERROR, null);
     }
 }

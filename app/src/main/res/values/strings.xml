@@ -3,6 +3,7 @@
     <string name="base_url">https://technfd.herokuapp.com/api</string>
     <string name="base_info">Cá nhân</string>
     <string name="home">Home</string>
+    <string name="mon_hoc">Môn học</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

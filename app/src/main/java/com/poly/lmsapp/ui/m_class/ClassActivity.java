@@ -2,6 +2,7 @@ package com.poly.lmsapp.ui.m_class;
 
 import android.content.Intent;
 import android.os.Build;
+import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class ClassActivity extends BaseActivity {
     private Intent intent;
     private ArrayList<ClassModel> listData = new ArrayList<>();
 
+
     @Override
     public void setLayout() {
         setContentView(R.layout.activity_class);
@@ -42,6 +44,7 @@ public class ClassActivity extends BaseActivity {
         mSpRefreshClass = findViewById(R.id.sp_refresh_class);
         mRvClass = findViewById(R.id.rv_class);
         mTvNoData = findViewById(R.id.tv_no_data);
+
     }
 
     @Override
@@ -50,11 +53,18 @@ public class ClassActivity extends BaseActivity {
         intent = getIntent();
         setToolbarTitle(intent.getStringExtra(KeyResource.NAME_SUBJECT));
         setTbDrawable(R.drawable.bg_gradient);
-       fetchData();
+        mSpRefreshClass.setOnRefreshListener(() -> {
+            mSpRefreshClass.setRefreshing(true);
+            refreshData();
+        });
+        fetchData();
     }
+
 
     @Override
     public void fetchData() {
+        if (!isRefreshing())
+            showLoading(true);
         Map<String, Object> map = new HashMap<>();
         map.put(KeyResource.ID_SUBJECT, intent.getIntExtra(KeyResource.ID_SUBJECT, -1));
         Client.getInstance().getAllClass(map).enqueue(new Callback<BaseResponse>() {
@@ -67,12 +77,18 @@ public class ClassActivity extends BaseActivity {
                     basePageResponse.getData().forEach(o -> {
                         listData.add((ClassModel) Utils.jsonDecode(o, ClassModel.class));
                     });
-                    ClassAdapter classAdapter = new ClassAdapter(listData,R.layout.item_subject);
-                    mRvClass.addItemDecoration(new DividerItemDecoration(ClassActivity.this,DividerItemDecoration.VERTICAL));
+                    ClassAdapter classAdapter = new ClassAdapter(listData, R.layout.item_subject);
                     mRvClass.setAdapter(classAdapter);
+                    if (listData.size() == 0) mTvNoData.setVisibility(View.VISIBLE);
+                    else mTvNoData.setVisibility(View.GONE);
+                    if (isRefreshing()) listData.clear();
+                    mSpRefreshClass.setRefreshing(false);
+                    setRefreshing(false);
                 } else {
                     onFailResponse(ClassActivity.this, baseResponse.getError().getMessage());
                 }
+                showLoading(false);
+
             }
 
             @Override

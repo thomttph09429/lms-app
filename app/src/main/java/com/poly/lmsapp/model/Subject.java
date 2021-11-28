@@ -1,12 +1,35 @@
 package com.poly.lmsapp.model;
 
-public class Subject {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Subject implements Parcelable {
     private String name;
     private int idDepartment;
     private String description;
     private String createdAt;
-    private int createdBy;
+//    private int createdBy;
     private int id;
+
+    protected Subject(Parcel in) {
+        name = in.readString();
+        idDepartment = in.readInt();
+        description = in.readString();
+        createdAt = in.readString();
+        id = in.readInt();
+    }
+
+    public static final Creator<Subject> CREATOR = new Creator<Subject>() {
+        @Override
+        public Subject createFromParcel(Parcel in) {
+            return new Subject(in);
+        }
+
+        @Override
+        public Subject[] newArray(int size) {
+            return new Subject[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -40,13 +63,13 @@ public class Subject {
         this.createdAt = createdAt;
     }
 
-    public int getCreatedBy() {
-        return createdBy;
-    }
+//    public int getCreatedBy() {
+//        return createdBy;
+//    }
 
-    public void setCreatedBy(int createdBy) {
-        this.createdBy = createdBy;
-    }
+//    public void setCreatedBy(int createdBy) {
+//        this.createdBy = createdBy;
+//    }
 
     public int getId() {
         return id;
@@ -54,5 +77,19 @@ public class Subject {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeInt(idDepartment);
+        parcel.writeString(description);
+        parcel.writeString(createdAt);
+        parcel.writeInt(id);
     }
 }

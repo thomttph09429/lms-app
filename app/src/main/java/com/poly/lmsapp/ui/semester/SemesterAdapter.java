@@ -3,6 +3,7 @@ package com.poly.lmsapp.ui.semester;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.LMSAdapter;
@@ -17,7 +18,7 @@ public class SemesterAdapter extends LMSAdapter {
     private TextView mTvKyHoc;
     private TextView mTvTime;
     private TextView mTvNguoiTao;
-    private ConstraintLayout mContainer;
+    private CardView mContainer;
 
 
     public SemesterAdapter(ArrayList listData, int layout) {

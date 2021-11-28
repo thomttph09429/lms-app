@@ -3,15 +3,21 @@
           package="com.poly.lmsapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
 
     <application
-            android:allowBackup="true"
+            android:requestLegacyExternalStorage="true"
+            android:allowBackup="false"
             android:icon="@drawable/ic_splash"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.LmsApp">
-        <activity android:name=".ui.detail_document.DetailDocumentActivity">
+        <activity android:name=".ui.list_type.ListTypeActivity">
+        </activity>
+        <activity android:name=".ui.group_type.GroupTypeActivity">
         </activity>
         <activity android:name=".ui.detail_class.DetailClassActivity">
         </activity>
@@ -23,7 +29,7 @@
         </activity>
         <activity android:name=".ui.change_password.ChangePasswordActivity">
         </activity>
-        <activity android:name=".ui.detail_doc.detail_quiz.DetailQuizActivity">
+        <activity android:name=".ui.detail_doc.detail_quiz.DetailAssignmentActivity">
         </activity>
         <activity android:name=".ui.detail_doc.DetailDocumentActivity">
         </activity>

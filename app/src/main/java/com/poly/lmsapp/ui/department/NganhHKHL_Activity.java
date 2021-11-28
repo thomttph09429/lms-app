@@ -60,8 +60,9 @@ public class NganhHKHL_Activity extends BaseActivity {
 
     @Override
     public void fetchData() {
+        showLoading(true);
         Map<String, Object> map = new HashMap<>();
-        map.put(KeyResource.ID_SEMESTER, intent.getIntExtra(KeyResource.ID_SEMESTER,-1));
+        map.put(KeyResource.ID_SEMESTER, intent.getIntExtra(KeyResource.ID_SEMESTER, -1));
         Client.getInstance().getAllDepartment(map).enqueue(new Callback<BaseResponse>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -81,6 +82,8 @@ public class NganhHKHL_Activity extends BaseActivity {
                     adapter.notifyDataSetChanged();
                     mSpRefresh.setRefreshing(false);
                 }
+                showLoading(false);
+
             }
 
             @Override

@@ -48,7 +48,7 @@ public class SemesterActivity extends BaseActivity {
 
     @Override
     public void fetchData() {
-
+        showLoading(true);
         Map<String, Object> map = new HashMap<>();
         map.put(KeyResource.ID_REPOSITORY, intent.getIntExtra(KeyResource.ID_REPOSITORY, -1));
         Client.getInstance().getAllSemester(map).enqueue(new Callback<BaseResponse>() {
@@ -65,9 +65,11 @@ public class SemesterActivity extends BaseActivity {
                     if (listData.size() == 0) mTvNoData.setVisibility(View.VISIBLE);
                     else mTvNoData.setVisibility(View.GONE);
                     SemesterAdapter semesterAdapter = new SemesterAdapter(listData, R.layout.item_semester);
-                    mRvSemester.addItemDecoration(new DividerItemDecoration(SemesterActivity.this, DividerItemDecoration.VERTICAL));
+//                    mRvSemester.addItemDecoration(new DividerItemDecoration(SemesterActivity.this, DividerItemDecoration.VERTICAL));
                     mRvSemester.setAdapter(semesterAdapter);
                 }
+                showLoading(false);
+
             }
 
             @Override

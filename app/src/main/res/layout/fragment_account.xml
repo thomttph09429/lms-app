@@ -4,7 +4,7 @@
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
-                                                   tools:context=".ui.account.AccountFragment">
+                                                   tools:context=".ui.home.account.AccountFragment">
 
     <View android:layout_width="0dp"
           android:layout_height="106dp"
@@ -26,6 +26,8 @@
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Name"
+              android:textSize="@dimen/_16sdp"
+              android:textColor="@color/black"
               android:layout_marginTop="@dimen/_16sdp"
               app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
               app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +62,10 @@
                       android:id="@+id/tv_email"/>
 
         </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginTop="@dimen/_5sdp"
+              android:background="@color/grey"/>
         <LinearLayout android:layout_width="match_parent"
                       android:orientation="horizontal"
                       android:layout_marginTop="@dimen/_8sdp"
@@ -77,6 +83,10 @@
                       android:id="@+id/tv_phone_number"/>
 
         </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginTop="@dimen/_5sdp"
+              android:background="@color/grey"/>
         <LinearLayout android:layout_width="match_parent"
                       android:layout_marginTop="@dimen/_8sdp"
                       android:orientation="horizontal"
@@ -95,6 +105,10 @@
                       android:id="@+id/tv_birth"/>
 
         </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginTop="@dimen/_5sdp"
+              android:background="@color/grey"/>
         <LinearLayout android:layout_width="match_parent"
                       android:layout_marginTop="@dimen/_8sdp"
                       android:orientation="horizontal"
@@ -112,7 +126,12 @@
                       android:text="Summer 2021"
                       android:id="@+id/tv_ki_hoc"/>
 
-        </LinearLayout><LinearLayout android:layout_width="match_parent"
+        </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginTop="@dimen/_5sdp"
+              android:background="@color/grey"/>
+        <LinearLayout android:layout_width="match_parent"
                       android:layout_marginTop="@dimen/_8sdp"
                       android:orientation="horizontal"
                       android:layout_height="wrap_content">
@@ -147,17 +166,17 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="16dp"/>
-    <Button
+    <TextView
             android:id="@+id/btnDangXuat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/_24sdp"
-            android:background="@drawable/btn_login_signup"
+            android:gravity="center_horizontal"
             android:text="Đăng xuất"
             android:translationZ="0dp"
 
-            android:textColor="@color/white"
+            android:textColor="@color/primary_color"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
             app:layout_constraintStart_toStartOf="parent"

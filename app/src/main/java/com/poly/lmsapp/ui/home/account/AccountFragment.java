@@ -1,4 +1,4 @@
-package com.poly.lmsapp.ui.account;
+package com.poly.lmsapp.ui.home.account;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,20 +23,13 @@ import com.poly.lmsapp.commons.network.Client;
 import com.poly.lmsapp.commons.utils.RenderImage;
 import com.poly.lmsapp.commons.utils.Status;
 import com.poly.lmsapp.commons.utils.Utils;
-import com.poly.lmsapp.model.BasePageResponse;
 import com.poly.lmsapp.model.BaseResponse;
-import com.poly.lmsapp.model.Repository;
 import com.poly.lmsapp.model.User;
 import com.poly.lmsapp.ui.activity.SplashActivity;
 import com.poly.lmsapp.ui.change_password.ChangePasswordActivity;
-import com.poly.lmsapp.ui.home.HomeActivity;
-import com.poly.lmsapp.ui.repository.RepositoryAdapter;
-import com.poly.lmsapp.ui.repository.RepositoryFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import java.util.ArrayList;
 
 
 public class AccountFragment extends Fragment {
@@ -49,33 +42,53 @@ public class AccountFragment extends Fragment {
     private TextView tvKiHoc;
     private TextView tvChuyenNganh;
     private Button btnQuenMatKhau;
-    private Button btnDangXuat;
+    private TextView btnDangXuat;
     private ConstraintLayout parentLoading;
+    private static Bundle bundle;
+    private User user;
 
     public static AccountFragment getInstance() {
         if (repositoryFragment == null) repositoryFragment = new AccountFragment();
         return repositoryFragment;
     }
 
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (bundle == null)
+            bundle = new Bundle();
+        bundle.putParcelable("saveInstanceUser", user);
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        initView(view);
+        if(bundle !=  null){
+            user = bundle.getParcelable("saveInstanceUser");
+            if(user != null){
+                tvName.setText(user.getName());
+                tvBirth.setText(user.getBirth());
+                tvEmail.setText(user.getEmail());
+                tvPhoneNumber.setText(user.getPhoneNumber());
+//                    tvChuyenNganh.setText(user.getChuyenNganh());
+//                    tvKiHoc.setText(user.getKiHoc());
+                RenderImage.loadImageNetwork(user.getAvatar(), ivAvatar);
+            }
 
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        }
+        return view;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) { super.onViewCreated(view, savedInstanceState);
         initView(view);
-        btnDangXuat.setOnClickListener(view1 ->{
+
+
+
+        btnDangXuat.setOnClickListener(view1 -> {
             BaseDialog.showBaseDialog(getActivity(), "Nhấn nút \"Đồng ý\" để đăng xuất?", new BaseDialogListener() {
                 @Override
                 public void confirmListener() {
@@ -91,10 +104,11 @@ public class AccountFragment extends Fragment {
             });
         });
 
-        btnQuenMatKhau.setOnClickListener(view1 ->{
+        btnQuenMatKhau.setOnClickListener(view1 -> {
             startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
         });
-        fetchData();
+        if (bundle == null)
+            fetchData();
     }
 
     private void initView(View view) {
@@ -111,7 +125,7 @@ public class AccountFragment extends Fragment {
     }
 
     public void fetchData() {
-//        showLoading(true);
+        showLoading(true);
         Client.getInstance().getUserInfo().enqueue(new Callback<BaseResponse>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -119,13 +133,13 @@ public class AccountFragment extends Fragment {
                 BaseResponse baseResponse = response.body();
                 showLoading(false);
                 if (baseResponse != null && baseResponse.getError().getCode() == 0) {
-                    User user = (User) Utils.jsonDecode(baseResponse.getData(), User.class);
+                    user = (User) Utils.jsonDecode(baseResponse.getData(), User.class);
                     tvName.setText(user.getName());
                     tvBirth.setText(user.getBirth());
                     tvEmail.setText(user.getEmail());
                     tvPhoneNumber.setText(user.getPhoneNumber());
-                    tvChuyenNganh.setText(user.getChuyenNganh());
-                    tvKiHoc.setText(user.getKiHoc());
+//                    tvChuyenNganh.setText(user.getChuyenNganh());
+//                    tvKiHoc.setText(user.getKiHoc());
                     RenderImage.loadImageNetwork(user.getAvatar(), ivAvatar);
                 } else {
                     if (baseResponse != null)

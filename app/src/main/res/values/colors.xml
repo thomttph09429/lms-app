@@ -19,12 +19,15 @@
     <color name="text_title">#F6B2BF</color>
     <color name="color_mobile_start">#BE47D2</color>
     <color name="color_mobile_end">#4B70E1</color>
+    <color name="blue">#007AFF</color>
     <color name="color_mobile_mid">#8C59D9</color>
     <color name="grey">#B0B0B0</color>
     <color name="red">#FF0000</color>
     <color name="orange">#FFAA00</color>
+    <color name="yellow">#FFEB3B</color>
     <color name="orange20">#EFA000</color>
     <color name="purple">#5D6ADF</color>
+    <color name="green">#4CAF50</color>
 
 
 </resources>

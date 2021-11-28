@@ -39,7 +39,7 @@ public class DetailDocumentActivity extends BaseActivity {
         setToolbarTitle(intent.getStringExtra(KeyResource.NAME_DOCUMENT));
         setTbDrawable(R.drawable.bg_gradient);
         initView();
-        super.createView();
+//        super.createView();
 
     }
 
@@ -49,14 +49,7 @@ public class DetailDocumentActivity extends BaseActivity {
 
     @Override
     public void fetchData() {
-        String type = intent.getStringExtra(KeyResource.TYPE_DOCUMENT);
-        if(type.equals("ASSIGNMENT")){
-            getAssignment();
-        }else if(type.equals("LAB")){
-            getLab();
-        }else if(type.equals("QUIZ")){
-            getQuiz();
-        }
+
 
 
     }

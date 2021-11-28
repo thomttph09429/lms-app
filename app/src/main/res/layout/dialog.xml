@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_24sdp"
-                android:background="@drawable/btn_login_signup"
+                android:background="@drawable/btn_click"
                 android:text="Đồng ý"
                 android:textColor="@color/white"/>
         <Button
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/_24sdp"
-                android:background="@drawable/btn_logout"
+                android:background="@drawable/btn_click_cancel"
                 android:text="Hủy"
                 android:textColor="@color/white"/>
     </LinearLayout>

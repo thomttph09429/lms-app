@@ -15,6 +15,13 @@ public class KeyResource {
     public static final String ID_CLASS = "idClass";
     public static final String NAME_CLASS = "nameClass";
     public static final String ID_DOCUMENT = "idDocument";
+    public static final String ID_DOCUMENT_TYPE = "idDocumentType";
+    public static final String ID_USER = "idUser";
     public static final String NAME_DOCUMENT = "nameDocument";
     public static final String TYPE_DOCUMENT = "typeDocument";
+    public static final String OBJECT_DOCUMENT = "objectDocument";
+    public static final String ID_FILE_ATTACH = "id";
+    public static final String ID_QUIZ = "idQuiz";
+    public static final String ID_GROUP_TYPE = "idGroupType";
+    public static final String NAME_GROUP_TYPE = "nameGroupType";
 }

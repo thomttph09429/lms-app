@@ -1,10 +1,12 @@
 package com.poly.lmsapp.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class User {
+public class User implements Parcelable {
 
     @SerializedName("_id")
     private String _id;
@@ -22,14 +24,14 @@ public class User {
     private String birth;
     @SerializedName("phoneNumber")
     private String phoneNumber;
-    @SerializedName("chuyenNganh")
-    private String chuyenNganh;
+//    @SerializedName("chuyenNganh")
+//    private String chuyenNganh;
     @SerializedName("oldPassword")
     private String oldPassword;
     @SerializedName("newPassword")
     private String newPassword;
-    @SerializedName("kiHoc")
-    private String kiHoc;
+//    @SerializedName("kiHoc")
+//    private String kiHoc;
     @SerializedName("permission")
     private List<Permission> permission;
 
@@ -39,23 +41,49 @@ public class User {
         this.token = token;
     }
 
-    public String getChuyenNganh() {
-        return chuyenNganh;
+//    public String getChuyenNganh() {
+//        return chuyenNganh;
+//    }
+
+//    public void setChuyenNganh(String chuyenNganh) {
+//        this.chuyenNganh = chuyenNganh;
+//    }
+
+//    public String getKiHoc() {
+//        return kiHoc;
+//    }
+
+//    public void setKiHoc(String kiHoc) {
+//        this.kiHoc = kiHoc;
+//    }
+
+
+    protected User(Parcel in) {
+        _id = in.readString();
+        name = in.readString();
+        userName = in.readString();
+        password = in.readString();
+        email = in.readString();
+        avatar = in.readString();
+        birth = in.readString();
+        phoneNumber = in.readString();
+        oldPassword = in.readString();
+        newPassword = in.readString();
+        token = in.readString();
+        id = in.readInt();
     }
 
-    public void setChuyenNganh(String chuyenNganh) {
-        this.chuyenNganh = chuyenNganh;
-    }
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
 
-    public String getKiHoc() {
-        return kiHoc;
-    }
-
-    public void setKiHoc(String kiHoc) {
-        this.kiHoc = kiHoc;
-    }
-
-
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getAvatar() {
         return avatar;
@@ -180,5 +208,26 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(_id);
+        parcel.writeString(name);
+        parcel.writeString(userName);
+        parcel.writeString(password);
+        parcel.writeString(email);
+        parcel.writeString(avatar);
+        parcel.writeString(birth);
+        parcel.writeString(phoneNumber);
+        parcel.writeString(oldPassword);
+        parcel.writeString(newPassword);
+        parcel.writeString(token);
+        parcel.writeInt(id);
     }
 }
