@@ -4,12 +4,11 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.LMSAdapter;
 import com.poly.lmsapp.commons.resource.KeyResource;
 import com.poly.lmsapp.model.Semester;
-import com.poly.lmsapp.ui.department.NganhHKHL_Activity;
+import com.poly.lmsapp.ui.department.DepartmentActivity;
 
 import java.util.ArrayList;
 
@@ -41,7 +40,7 @@ public class SemesterAdapter extends LMSAdapter {
         mTvTime.setText(semester.getCreateAt());
         mTvNguoiTao.setText(semester.getCreateBy().getName());
         mContainer.setOnClickListener(view -> {
-            Intent intent = new Intent(context, NganhHKHL_Activity.class);
+            Intent intent = new Intent(context, DepartmentActivity.class);
             intent.putExtra(KeyResource.ID_SEMESTER, semester.getId());
             intent.putExtra(KeyResource.NAME_SEMESTER, semester.getName());
             context.startActivity(intent);

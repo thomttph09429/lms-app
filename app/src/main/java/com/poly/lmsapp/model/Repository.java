@@ -9,12 +9,15 @@ public class Repository implements Parcelable {
         private String _id;
         private String title;
         private String image;
+        private String type;
         private int id;
+
 
     protected Repository(Parcel in) {
         _id = in.readString();
         title = in.readString();
         image = in.readString();
+        type = in.readString();
         id = in.readInt();
     }
 
@@ -29,6 +32,14 @@ public class Repository implements Parcelable {
             return new Repository[size];
         }
     };
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String get_id() {
         return _id;
@@ -71,6 +82,7 @@ public class Repository implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(_id);
         parcel.writeString(title);
+        parcel.writeString(type);
         parcel.writeString(image);
         parcel.writeInt(id);
     }

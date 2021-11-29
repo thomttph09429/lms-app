@@ -8,8 +8,12 @@ import android.widget.TextView;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.LMSAdapter;
 import com.poly.lmsapp.commons.resource.KeyResource;
+import com.poly.lmsapp.commons.utils.EnviromentSingleton;
 import com.poly.lmsapp.commons.utils.RenderImage;
+import com.poly.lmsapp.model.Department;
 import com.poly.lmsapp.model.Repository;
+import com.poly.lmsapp.model.Subject;
+import com.poly.lmsapp.ui.department.DepartmentActivity;
 import com.poly.lmsapp.ui.semester.SemesterActivity;
 
 import java.util.ArrayList;
@@ -38,7 +42,14 @@ public class RepositoryAdapter extends LMSAdapter {
         RenderImage.loadImageNetwork(repository.getImage(), mImgDescription);
 
         mContainer.setOnClickListener(view -> {
-            Intent intent = new Intent(context, SemesterActivity.class);
+            Intent intent;
+            EnviromentSingleton.getEnviromentSingleton().setRepositoryType(repository.getType());
+            EnviromentSingleton.getEnviromentSingleton().setIdRepository(repository.getId());
+            if (repository.getType().equalsIgnoreCase("tài liệu")) {
+                intent = new Intent(context, DepartmentActivity.class);
+            } else {
+                intent = new Intent(context, SemesterActivity.class);
+            }
             intent.putExtra(KeyResource.ID_REPOSITORY, repository.getId());
             intent.putExtra(KeyResource.NAME_REPOSITORY, repository.getTitle());
             context.startActivity(intent);

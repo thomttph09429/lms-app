@@ -5,12 +5,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.LMSAdapter;
 import com.poly.lmsapp.commons.resource.KeyResource;
 import com.poly.lmsapp.commons.utils.EnviromentSingleton;
 import com.poly.lmsapp.model.Subject;
+import com.poly.lmsapp.ui.file_system.FileSystemActivity;
 import com.poly.lmsapp.ui.m_class.ClassActivity;
 
 import java.util.ArrayList;
@@ -37,10 +37,15 @@ public class SubjectAdapter extends LMSAdapter {
         Subject subject = (Subject) getListData().get(position);
         mTvSubject.setText(subject.getName());
         mContainer.setOnClickListener(view -> {
+            Intent intent;
             EnviromentSingleton.getEnviromentSingleton().setIdSubject(subject.getId());
-            Intent intent = new Intent(context, ClassActivity.class);
-            intent.putExtra(KeyResource.ID_SUBJECT,subject.getId());
-            intent.putExtra(KeyResource.NAME_SUBJECT,subject.getName());
+            if (EnviromentSingleton.getEnviromentSingleton().getRepositoryType().equalsIgnoreCase("tài liệu")) {
+                intent = new Intent(context, FileSystemActivity.class);
+            } else {
+                intent = new Intent(context, ClassActivity.class);
+            }
+            intent.putExtra(KeyResource.ID_SUBJECT, subject.getId());
+            intent.putExtra(KeyResource.NAME_SUBJECT, subject.getName());
             context.startActivity(intent);
         });
     }

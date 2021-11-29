@@ -12,7 +12,7 @@ public class RenderImage {
        CircularProgressDrawable progress = new CircularProgressDrawable(imageView.getContext());
        progress.setColorSchemeColors(R.color.primary_color, R.color.colorPrimaryDark, R.color.colorAccent);
        progress.setCenterRadius(30f);
-       progress.setStrokeWidth(2f);
+       progress.setStrokeWidth(4f);
        progress.start();
        if(path == null || path.isEmpty()) path = "https://abc.com";
         Picasso.get().load(Utils.concatPath(path)).placeholder(progress).error(R.drawable.ic_404).into(imageView);

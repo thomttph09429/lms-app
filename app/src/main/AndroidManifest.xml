@@ -3,18 +3,20 @@
           package="com.poly.lmsapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
 
     <application
-            android:requestLegacyExternalStorage="true"
             android:allowBackup="false"
             android:icon="@drawable/ic_splash"
             android:label="@string/app_name"
+            android:requestLegacyExternalStorage="true"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.LmsApp">
+        <activity android:name=".ui.file_system.FileSystemActivity">
+        </activity>
         <activity android:name=".ui.list_type.ListTypeActivity">
         </activity>
         <activity android:name=".ui.group_type.GroupTypeActivity">
@@ -34,7 +36,7 @@
         <activity android:name=".ui.detail_doc.DetailDocumentActivity">
         </activity>
         <activity android:name=".ui.activity.ChooseActivity"/>
-        <activity android:name=".ui.department.NganhHKHL_Activity"/>
+        <activity android:name=".ui.department.DepartmentActivity"/>
         <activity android:name=".ui.home.HomeActivity"/>
         <activity android:name=".ui.activity.LoginActivity"/>
         <activity android:name=".ui.activity.RegisterActivity"/>

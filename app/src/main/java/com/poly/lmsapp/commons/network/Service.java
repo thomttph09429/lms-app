@@ -2,7 +2,6 @@ package com.poly.lmsapp.commons.network;
 
 import com.poly.lmsapp.model.*;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -34,6 +33,10 @@ public interface Service {
 
     @GET("api/get_all_departments")
     Call<BaseResponse> getAllDepartment(@QueryMap Map<String, Object> map);
+
+
+    @GET("api/get_repo_department")
+    Call<BaseResponse> getAllRepoDepartment(@QueryMap Map<String, Object> map);
 
     @GET("api/get_subjects")
     Call<BaseResponse> getAllSubject(@QueryMap Map<String, Object> map);
@@ -91,5 +94,8 @@ public interface Service {
 
    @POST("/api/update_point_info_quiz")
     Call<BaseResponse> updatePointInfoQUiz(@Body InfoQuiz o);
+
+   @GET("/api/get_file_system")
+    Call<BaseResponse> getAllFileSystem(@QueryMap Map<String, Object> map);
 
 }

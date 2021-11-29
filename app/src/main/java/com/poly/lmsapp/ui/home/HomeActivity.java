@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.BaseActivity;
 import com.poly.lmsapp.commons.network.Client;
+import com.poly.lmsapp.commons.utils.EnviromentSingleton;
 import com.poly.lmsapp.commons.utils.FilePicker;
 import com.poly.lmsapp.commons.utils.PersonSingleton;
 import com.poly.lmsapp.commons.utils.Utils;
@@ -73,6 +74,7 @@ public class HomeActivity extends BaseActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.nav_recent_class:
+                    EnviromentSingleton.getEnviromentSingleton().setRepositoryType("Khác");
                     fragment = RecentClassFragment.getInstance();
                     loadFragment(fragment);
                     return true;

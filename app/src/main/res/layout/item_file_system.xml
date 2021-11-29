@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   android:layout_width="match_parent"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   app:cardCornerRadius="@dimen/_12sdp"
+                                   android:id="@+id/container"
+                                   android:layout_marginVertical="@dimen/_4sdp"
+                                   android:layout_marginHorizontal="@dimen/_8sdp"
+                                   android:layout_height="wrap_content">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal">
+        <ImageView android:layout_width="@dimen/_75sdp"
+                   android:id="@+id/iv_file_system"
+                   android:layout_height="@dimen/_75sdp"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:gravity="center"
+                      android:layout_marginLeft="@dimen/_4sdp"
+                      android:layout_gravity="center"
+                      android:orientation="vertical"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_width="match_parent"
+                      android:textSize="@dimen/_14sdp"
+                      android:id="@+id/tv_name_file_system"
+                      android:layout_height="wrap_content"
+                      android:textColor="@color/black"
+                      android:text="Name"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_marginTop="@dimen/_4sdp"
+                      android:textColor="@color/blue"
+                      android:id="@+id/tv_link_file_system"
+                      android:layout_height="wrap_content"
+                      android:text="Link"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_marginTop="@dimen/_4sdp"
+                      android:textSize="@dimen/_10sdp"
+                      android:id="@+id/tv_create_time_file_system"
+                      android:layout_height="wrap_content"
+                      android:text="Created time"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -5,7 +5,7 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:orientation="vertical"
-                                                   tools:context=".ui.department.NganhHKHL_Activity">
+                                                   tools:context=".ui.department.DepartmentActivity">
     <include layout="@layout/appbar"
              android:id="@+id/include2"
              app:layout_constraintStart_toStartOf="parent"

@@ -3,19 +3,11 @@ package com.poly.lmsapp.commons.utils;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
-import android.view.Window;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
-import androidx.annotation.RequiresApi;
 import com.google.gson.Gson;
 import com.poly.lmsapp.commons.resource.StringResource;
-import com.poly.lmsapp.model.User;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Base64;
 
 
 public class Utils {
@@ -41,6 +33,7 @@ public class Utils {
     public static void lunchUrl(Activity activity, String url) {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
+        Log.d("Utils open Url: ", "lunchUrl: " + url);
         activity.startActivity(i);
     }
 
