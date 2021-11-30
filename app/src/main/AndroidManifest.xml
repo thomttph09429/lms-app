@@ -15,35 +15,35 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.LmsApp">
-        <activity android:name=".ui.file_system.FileSystemActivity">
+        <activity android:name=".ui.file_system.FileSystemActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.list_type.ListTypeActivity">
+        <activity android:name=".ui.list_type.ListTypeActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.group_type.GroupTypeActivity">
+        <activity android:name=".ui.group_type.GroupTypeActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.detail_class.DetailClassActivity">
+        <activity android:name=".ui.detail_class.DetailClassActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.m_class.ClassActivity">
+        <activity android:name=".ui.m_class.ClassActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.subject.SubjectActivity">
+        <activity android:name=".ui.subject.SubjectActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.semester.SemesterActivity">
+        <activity android:name=".ui.semester.SemesterActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.change_password.ChangePasswordActivity">
+        <activity android:name=".ui.change_password.ChangePasswordActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.detail_doc.detail_quiz.DetailAssignmentActivity">
+        <activity android:name=".ui.detail_doc.detail_quiz.DetailAssignmentActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.detail_doc.DetailDocumentActivity">
+        <activity android:name=".ui.detail_doc.DetailDocumentActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".ui.activity.ChooseActivity"/>
-        <activity android:name=".ui.department.DepartmentActivity"/>
-        <activity android:name=".ui.home.HomeActivity"/>
-        <activity android:name=".ui.activity.LoginActivity"/>
-        <activity android:name=".ui.activity.RegisterActivity"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".ui.activity.ChooseActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.department.DepartmentActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.home.HomeActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.LoginActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.RegisterActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"  android:screenOrientation="portrait"/>
         <activity
                 android:name=".ui.activity.SplashActivity"
-                android:theme="@style/SplashTheme">
+                android:theme="@style/SplashTheme"  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

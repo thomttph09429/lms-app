@@ -8,9 +8,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.BaseActivity;
@@ -18,8 +15,7 @@ import com.poly.lmsapp.commons.network.Client;
 import com.poly.lmsapp.commons.resource.KeyResource;
 import com.poly.lmsapp.commons.utils.Utils;
 import com.poly.lmsapp.model.*;
-import com.poly.lmsapp.ui.semester.SemesterActivity;
-import com.poly.lmsapp.ui.semester.SemesterAdapter;
+import com.poly.lmsapp.ui.file_system.FileSystemAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +33,8 @@ public class GroupTypeActivity extends BaseActivity {
     private Button mBtnJoin;
     private Button mBtnCancel;
     private LinearLayout mLlNotJoin;
-
+    private Map<String, Object> map;
+    private RecyclerView mRvFileSystem;
 
     @Override
     public void setLayout() {
@@ -55,7 +52,10 @@ public class GroupTypeActivity extends BaseActivity {
         mTvGiaNhap = findViewById(R.id.tv_gia_nhap);
         mBtnJoin = findViewById(R.id.btn_join);
         mBtnCancel = findViewById(R.id.btn_cancel);
+        mRvFileSystem = findViewById(R.id.rv_file_system);
 
+//        mRvGroupType.setNestedScrollingEnabled(false);
+//        mRvFileSystem.setNestedScrollingEnabled(false);
         mBtnJoin.setOnClickListener(view -> {
             registerClass();
         });
@@ -133,13 +133,14 @@ public class GroupTypeActivity extends BaseActivity {
     @Override
     public void fetchData() {
         showLoading(true);
-        Map<String, Object> map = new HashMap<>();
+        map = new HashMap<>();
         map.put(KeyResource.ID_CLASS, intent.getIntExtra(KeyResource.ID_CLASS, -1));
         Client.getInstance().getGroupType(map).enqueue(new Callback<BaseResponse>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 BaseResponse baseResponse = response.body();
+                showLoading(false);
                 if (baseResponse != null && baseResponse.getError().getCode() == 0) {
                     BasePageResponse basePageResponse = (BasePageResponse) Utils.jsonDecode(baseResponse.getData(), BasePageResponse.class);
                     ArrayList<GroupType> listData = new ArrayList<>();
@@ -154,14 +155,43 @@ public class GroupTypeActivity extends BaseActivity {
 
                     mLlNotJoin.setVisibility(View.GONE);
                     mRvGroupType.setVisibility(View.VISIBLE);
+
                 }
-                showLoading(false);
+                getFileSystem();
 
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 onFailResponse(GroupTypeActivity.this);
+            }
+        });
+
+
+    }
+
+    private void getFileSystem() {
+        showLoading(true);
+        Client.getInstance().getAllFileSystem(map).enqueue(new Callback<BaseResponse>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                BaseResponse baseResponse = response.body();
+                showLoading(false);
+                if (baseResponse != null && baseResponse.getError().getCode() == 0) {
+                    BasePageResponse basePageResponse = (BasePageResponse) Utils.jsonDecode(baseResponse.getData(), BasePageResponse.class);
+                    ArrayList<FileSystem> listFileSystem = new ArrayList<>();
+                    basePageResponse.getData().forEach(o -> {
+                        listFileSystem.add((FileSystem) Utils.jsonDecode(o, FileSystem.class));
+                    });
+                    FileSystemAdapter fileSystemAdapter = new FileSystemAdapter(listFileSystem, R.layout.item_file_system);
+                    mRvFileSystem.setAdapter(fileSystemAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+
             }
         });
     }

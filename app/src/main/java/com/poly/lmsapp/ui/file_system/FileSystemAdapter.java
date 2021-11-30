@@ -9,6 +9,7 @@ import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.LMSAdapter;
 import com.poly.lmsapp.commons.utils.Utils;
 import com.poly.lmsapp.model.FileSystem;
+import com.poly.lmsapp.ui.group_type.GroupTypeActivity;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,11 @@ public class FileSystemAdapter extends LMSAdapter {
         mTvCreateTimeFileSystem.setText(fileSystem.getCreateAt());
         mTvLinkFileSystem.setText(fileSystem.getLinkFile());
         mContainer.setOnClickListener(view -> {
-            Utils.lunchUrl(((FileSystemActivity)context),Utils.concatPath(fileSystem.getLinkFile()));
+            if (context instanceof FileSystemActivity)
+                Utils.lunchUrl(((FileSystemActivity) context), Utils.concatPath(fileSystem.getLinkFile()));
+            else if (context instanceof GroupTypeActivity)
+                Utils.lunchUrl(((GroupTypeActivity) context), Utils.concatPath(fileSystem.getLinkFile()));
+
         });
     }
 }
