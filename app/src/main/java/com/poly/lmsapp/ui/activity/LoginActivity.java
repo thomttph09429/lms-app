@@ -40,7 +40,7 @@ public class LoginActivity extends BaseActivity {
         setToolbarTitle("Đăng nhập");
         initView();
         setEvent();
-        fetchData();
+//        fetchData();
     }
 
     private void setEvent() {
@@ -65,8 +65,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void fetchData() {
-//        User user = new User(mEdtUserName.getText().toString(), mEdtPassword.getText().toString());
-        User user = new User("admin", "123@123a");
+        User user = new User(mEdtUserName.getText().toString(), mEdtPassword.getText().toString());
+//        User user = new User("admin", "123@123a");
         showLoading(true);
         Client.getInstance().login(user).enqueue(new Callback<BaseResponse>() {
             @Override

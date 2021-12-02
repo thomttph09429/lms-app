@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "892402491704",
+    "project_id": "assingmentuploadfile",
+    "storage_bucket": "assingmentuploadfile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892402491704:android:816871bed91b6d483021cd",
+        "android_client_info": {
+          "package_name": "com.poly.lmsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892402491704-jpjeuqo7ojcbjo0s59e54059h62qjkjc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.poly.lmsapp",
+            "certificate_hash": "33a328efe863367dbb4fb7eed3f1891ee8fec530"
+          }
+        },
+        {
+          "client_id": "892402491704-bp8e0n377h5rjsua654gtvajjbq9k7iu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASAEwr4U3daJVSsvHdMTsMuywL1_Ri-Rg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892402491704-bp8e0n377h5rjsua654gtvajjbq9k7iu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
