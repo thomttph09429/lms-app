@@ -1,13 +1,12 @@
 package com.poly.lmsapp.commons.local;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class LocalManager {
     private static LocalManager localManager ;
     private static SharedPreferences sharedPreferences ;
-    public static LocalManager getInstance(Activity activity){
+    public static LocalManager getInstance(Context activity){
         if(localManager == null){
             sharedPreferences = activity.getSharedPreferences("local_storage", Context.MODE_PRIVATE);
             localManager = new LocalManager();

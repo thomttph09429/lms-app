@@ -2,6 +2,7 @@ package com.poly.lmsapp.commons.resource;
 
 public class KeyResource {
     public static final String TOKEN = "token";
+    public static final String FCM_TOKEN = "fcm_token";
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
     public static final String ID_REPOSITORY = "idRepository";
@@ -24,4 +25,5 @@ public class KeyResource {
     public static final String ID_QUIZ = "idQuiz";
     public static final String ID_GROUP_TYPE = "idGroupType";
     public static final String NAME_GROUP_TYPE = "nameGroupType";
+    public static final String IS_TO_LOGIN = "isToLogin";
 }

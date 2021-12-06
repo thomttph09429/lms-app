@@ -34,11 +34,13 @@ public class User implements Parcelable {
 //    private String kiHoc;
     @SerializedName("permission")
     private List<Permission> permission;
+    private String fcmToken;
+    private int idGroup;
 
-    public User(String oldPassword, String newPassword, String token) {
+    public User(String oldPassword, String newPassword,int idGroup) {
         this.oldPassword = oldPassword;
         this.newPassword = newPassword;
-        this.token = token;
+        this.idGroup = idGroup;
     }
 
 //    public String getChuyenNganh() {
@@ -115,9 +117,10 @@ public class User implements Parcelable {
     public User() {
     }
 
-    public User(String userName, String password) {
+    public User(String userName, String password,String fcmToken) {
         this.userName = userName;
         this.password = password;
+        this.fcmToken = fcmToken;
     }
 
     public User(String _id, String name, String userName, String email, List<Permission> permission, String token, int id) {
@@ -229,5 +232,13 @@ public class User implements Parcelable {
         parcel.writeString(newPassword);
         parcel.writeString(token);
         parcel.writeInt(id);
+    }
+
+    public String getFcmToken() {
+        return fcmToken;
+    }
+
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
     }
 }

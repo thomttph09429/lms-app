@@ -1,9 +1,6 @@
 package com.poly.lmsapp.commons.services;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -16,6 +13,8 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.poly.lmsapp.MainActivity;
 import com.poly.lmsapp.R;
+import com.poly.lmsapp.commons.local.LocalManager;
+import com.poly.lmsapp.commons.resource.KeyResource;
 import com.poly.lmsapp.ui.activity.SplashActivity;
 
 import java.util.Map;
@@ -41,7 +40,7 @@ public class FirebaseService extends FirebaseMessagingService {
     }
 
     private void sendRegistrationToServer(String token) {
-        // TODO: Implement this method to send token to your app server.
+        LocalManager.getInstance(getApplicationContext()).putString(KeyResource.FCM_TOKEN,token);
     }
 
     // create Intent follow acction

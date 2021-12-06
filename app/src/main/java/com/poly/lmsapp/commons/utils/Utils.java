@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 import com.google.gson.Gson;
-import com.poly.lmsapp.commons.resource.StringResource;
 
 
 public class Utils {
@@ -31,10 +30,15 @@ public class Utils {
     }
 
     public static void lunchUrl(Activity activity, String url) {
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        Log.d("Utils open Url: ", "lunchUrl: " + url);
-        activity.startActivity(i);
+        try{
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            Log.d("Utils open Url: ", "lunchUrl: " + url);
+            activity.startActivity(i);
+        }catch (Exception e){
+            showToast(activity,"Không thể mở file");
+        }
+
     }
 
     public static void showToast(Activity activity, String message) {
@@ -42,7 +46,7 @@ public class Utils {
     }
 
     public static String concatPath(String path) {
-        return StringResource.baseUrl + path;
+        return path;
     }
 
 

@@ -1,6 +1,7 @@
 package com.poly.lmsapp.ui.detail_doc.detail_quiz;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -65,7 +66,7 @@ public class DetailAssignmentActivity extends BaseActivity {
 
     @Override
     public void createView() {
-        FilePicker.setActivity(this);
+
         intent = getIntent();
         assignment = (DocumentType) Utils.jsonDecode(intent.getStringExtra(KeyResource.OBJECT_DOCUMENT), DocumentType.class);
         setTbDrawable(R.drawable.bg_gradient);
@@ -124,6 +125,7 @@ public class DetailAssignmentActivity extends BaseActivity {
                 mViewBatDauLamBai.setVisibility(View.GONE);
                 fetchData();
                 mBtnPickFile.setOnClickListener(view -> {
+                    FilePicker.setActivity(DetailAssignmentActivity.this);
                     FilePicker.showFilePicker();
                 });
             }
@@ -144,16 +146,23 @@ public class DetailAssignmentActivity extends BaseActivity {
                 if (baseResponse != null) {
                     //Chưa làm bài
                     if (baseResponse.getError().getCode() == 0) {
-                        mViewBatDauLamBai.setVisibility(View.VISIBLE);
+
 
                         mCvSchedule.setVisibility(View.VISIBLE);
                         String time = DateTimeUtils.toDateFormat(assignment.getStartTime(), DateTimeUtils.SERVER_DATE_2, DateTimeUtils.TIME_DATE);
                         String etime = DateTimeUtils.toDateFormat(assignment.getEndTime(), DateTimeUtils.SERVER_DATE_2, DateTimeUtils.TIME_DATE);
                         mTvStartTime.setText(time);
                         mTvEndTime.setText(etime);
-                        mTvTimeResult.setText(DateTimeUtils.diffDate(DateTimeUtils.parseDate(assignment.getEndTime(), DateTimeUtils.SERVER_DATE_2)));
                         mTvDescription.setText(assignment.getDescription());
+                        if (!DateTimeUtils.afterNow(DateTimeUtils.parseDate(assignment.getEndTime(), DateTimeUtils.SERVER_DATE_2))) {
+                            mViewBatDauLamBai.setVisibility(View.GONE);
+                            mTvTimeResult.setText("Đã hết hạn");
+                            mTvTimeResult.setTextColor(Color.RED);
+                        } else {
+                            mViewBatDauLamBai.setVisibility(View.VISIBLE);
+                            mTvTimeResult.setText(DateTimeUtils.diffDate(DateTimeUtils.parseDate(assignment.getEndTime(), DateTimeUtils.SERVER_DATE_2)));
 
+                        }
                         mBtnLamBai.setOnClickListener(view -> {
                             mViewBatDauLamBai.setVisibility(View.GONE);
                             mViewCacCauHoi.setVisibility(View.VISIBLE);
@@ -162,13 +171,14 @@ public class DetailAssignmentActivity extends BaseActivity {
                         });
                         //đã hết giờ làm bài
                     } else if (baseResponse.getError().getCode() == 1) {
+                        mViewBatDauLamBai.setVisibility(View.GONE);
                         infoQuiz = (InfoQuiz) Utils.jsonDecode(baseResponse.getData(), InfoQuiz.class);
                         mTvTimeResult.setText("Đã hết thời gian làm bài.");
                         mTvTimeResult.setTextColor(getResources().getColor(R.color.red));
                         mViewKetQua.setVisibility(View.VISIBLE);
                         mViewCacCauHoi.setVisibility(View.GONE);
                         mViewNutQuiz.setVisibility(View.GONE);
-                        mTvKetQua.setText("Bạn đạt điểm: " + infoQuiz.getPoint());
+                        mTvKetQua.setText("Bạn đạt điểm: " + infoQuiz.getPoint() +" điểm");
                         //đang làm bài
                     } else if (baseResponse.getError().getCode() == 2) {
                         infoQuiz = (InfoQuiz) Utils.jsonDecode(baseResponse.getData(), InfoQuiz.class);
@@ -177,6 +187,8 @@ public class DetailAssignmentActivity extends BaseActivity {
                     } else if (baseResponse.getError().getCode() == 3) {
                         mTvTimeResult.setText("Đã hết thời gian làm bài. Bạn chưa làm quiz này");
                         mTvTimeResult.setTextColor(getResources().getColor(R.color.red));
+                        mViewBatDauLamBai.setVisibility(View.GONE);
+
                     }
 
                 }
@@ -302,12 +314,13 @@ public class DetailAssignmentActivity extends BaseActivity {
     }
 
     private void updatePoint() {
-
+        mViewCacCauHoi.setVisibility(View.GONE);
+        showLoading(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             listData.forEach(e -> {
                 e.getListCauTraLoi().forEach(t -> {
                     if (e.getIdDapAp() == t.getId()) {
-                        point += 10 / listData.size();
+                        point += (10 / listData.size());
                     }
                 });
             });
@@ -316,9 +329,16 @@ public class DetailAssignmentActivity extends BaseActivity {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 BaseResponse baseResponse = response.body();
+                showLoading(false);
+                mViewKetQua.setVisibility(View.VISIBLE);
+                mViewCacCauHoi.setVisibility(View.GONE);
+                mViewNutQuiz.setVisibility(View.GONE);
+                checkStatusQuiz();
                 if (baseResponse != null && baseResponse.getError().getCode() == 0) {
                     Utils.showToast(DetailAssignmentActivity.this, "Bài làm đã được gửi");
-
+                } else {
+                    Utils.showToast(DetailAssignmentActivity.this, "Hệ thống bận");
+                    mTvKetQua.setText("");
                 }
             }
 
@@ -396,6 +416,7 @@ public class DetailAssignmentActivity extends BaseActivity {
                     visibleUploadFile(View.VISIBLE);
                     showLoading(false);
                 }
+                FilePicker.setFile(null);
             }
 
             @Override
@@ -415,31 +436,37 @@ public class DetailAssignmentActivity extends BaseActivity {
 
     private void uploadFile() {
 
-        if (FilePicker.getFile().length() < 5000000) {
-            showLoading(true);
-            String data = FilePicker.convertBase64(FilePicker.getFile());
-            String name = FilePicker.getName();
-            FileAttach fileAttach = new FileAttach(
-                    name, EnviromentSingleton.getEnviromentSingleton().getIdDocumentType(), EnviromentSingleton.getEnviromentSingleton().getIdSubject(), EnviromentSingleton.getEnviromentSingleton().getIdClass(), data);
-            Client.getInstance().createFileAttach(fileAttach).enqueue(new Callback<BaseResponse>() {
-                @Override
-                public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                    BaseResponse baseResponse = response.body();
-                    showLoading(false);
-                    if (baseResponse != null && baseResponse.getError().getCode() == 0) {
-                        fetchData();
+        try {
+            if (FilePicker.getFile().length() < 5000000) {
+                showLoading(true);
+                String data = FilePicker.convertBase64(FilePicker.getFile());
+                String name = FilePicker.getName();
+                FileAttach fileAttach = new FileAttach(
+                        name, EnviromentSingleton.getEnviromentSingleton().getIdDocumentType(), EnviromentSingleton.getEnviromentSingleton().getIdSubject(), EnviromentSingleton.getEnviromentSingleton().getIdClass(), data);
+                Client.getInstance().createFileAttach(fileAttach).enqueue(new Callback<BaseResponse>() {
+                    @Override
+                    public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                        BaseResponse baseResponse = response.body();
+                        showLoading(false);
+                        if (baseResponse != null && baseResponse.getError().getCode() == 0) {
+                            fetchData();
+                        }
+
                     }
 
-                }
+                    @Override
+                    public void onFailure(Call<BaseResponse> call, Throwable t) {
+                        showLoading(false);
+                    }
+                });
+            } else {
+                Utils.showToast(DetailAssignmentActivity.this, "Vui lòng chọn file có kích thước nhỏ hơn 5 MB");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
 
-                @Override
-                public void onFailure(Call<BaseResponse> call, Throwable t) {
-                    showLoading(false);
-                }
-            });
-        } else {
-            Utils.showToast(DetailAssignmentActivity.this, "Vui lòng chọn file có kích thước nhỏ hơn 5 MB");
         }
+
 
     }
 

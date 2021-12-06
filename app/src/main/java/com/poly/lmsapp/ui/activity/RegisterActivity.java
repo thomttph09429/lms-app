@@ -3,22 +3,16 @@ package com.poly.lmsapp.ui.activity;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import androidx.core.view.ViewCompat;
 import com.google.android.material.textfield.TextInputLayout;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.BaseActivity;
 import com.poly.lmsapp.commons.base.BaseDialog;
-import com.poly.lmsapp.commons.base.BaseDialogListener;
 import com.poly.lmsapp.commons.network.Client;
-import com.poly.lmsapp.commons.resource.StringResource;
+import com.poly.lmsapp.commons.resource.KeyResource;
 import com.poly.lmsapp.commons.utils.Status;
 import com.poly.lmsapp.model.BaseResponse;
 import com.poly.lmsapp.model.User;
@@ -196,7 +190,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 signIn();
                 break;
             case R.id.btnDangNhap:
-                startActivity(new Intent(this, LoginActivity.class));
+                Intent intent = new Intent(this, LoginActivity.class);
+                intent.putExtra(KeyResource.IS_TO_LOGIN,true);
+
+                startActivity(intent);
+                finish();
                 break;
         }
     }
@@ -204,7 +202,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private void signIn() {
         if(checkValidate()){
             showLoading(true);
-            User user = new User(edtName.getText().toString().trim(), edtPassword.getText().toString().trim());
+            User user = new User(edtName.getText().toString().trim(), edtPassword.getText().toString().trim(),13);
             Client.getInstance().signUp(user).enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

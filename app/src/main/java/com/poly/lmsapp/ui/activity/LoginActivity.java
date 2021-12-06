@@ -12,6 +12,7 @@ import com.poly.lmsapp.commons.local.LocalManager;
 import com.poly.lmsapp.commons.network.Client;
 import com.poly.lmsapp.commons.resource.KeyResource;
 import com.poly.lmsapp.commons.resource.StringResource;
+import com.poly.lmsapp.commons.utils.PersonSingleton;
 import com.poly.lmsapp.commons.utils.Utils;
 import com.poly.lmsapp.model.BaseResponse;
 import com.poly.lmsapp.model.User;
@@ -49,7 +50,9 @@ public class LoginActivity extends BaseActivity {
             fetchData();
         });
         mBtnDoiDangNhap.setOnClickListener(view -> {
+//
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            finish();
         });
     }
 
@@ -65,7 +68,11 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void fetchData() {
-        User user = new User(mEdtUserName.getText().toString(), mEdtPassword.getText().toString());
+        String fcmToken = "";
+        if (LocalManager.getInstance(LoginActivity.this).contain(KeyResource.FCM_TOKEN)) {
+            fcmToken = LocalManager.getInstance(LoginActivity.this).getString(KeyResource.FCM_TOKEN);
+        }
+        User user = new User(mEdtUserName.getText().toString(), mEdtPassword.getText().toString(), fcmToken);
 //        User user = new User("admin", "123@123a");
         showLoading(true);
         Client.getInstance().login(user).enqueue(new Callback<BaseResponse>() {
@@ -74,10 +81,11 @@ public class LoginActivity extends BaseActivity {
                 BaseResponse baseResponse = response.body();
                 if (baseResponse != null && baseResponse.getError().getCode() == 0) {
 
-                    User user1 = (User) Utils.jsonDecode(baseResponse.getData(),User.class);
+                    User user1 = (User) Utils.jsonDecode(baseResponse.getData(), User.class);
                     LocalManager.getInstance(LoginActivity.this).putString(KeyResource.USERNAME, mEdtUserName.getText().toString());
                     LocalManager.getInstance(LoginActivity.this).putString(KeyResource.PASSWORD, mEdtUserName.getText().toString());
                     LocalManager.getInstance(LoginActivity.this).putString(KeyResource.TOKEN, user1.getToken());
+                    PersonSingleton.getInstance().setUser(user1);
                     StringResource.token = user1.getToken();
                     showLoading(false);
                     finish();
