@@ -2,6 +2,7 @@ package com.poly.lmsapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.google.gson.annotations.SerializedName;
 
 public class ClassModel implements Parcelable {
     private String _id;
@@ -9,6 +10,8 @@ public class ClassModel implements Parcelable {
     private String description;
     private int idSubject;
     private String createAt;
+    @SerializedName("giangVien")
+    private User teacher;
     private User createBy;
     private int id;
     private int __v;
@@ -101,6 +104,14 @@ public class ClassModel implements Parcelable {
 
     public void set__v(int __v) {
         this.__v = __v;
+    }
+
+    public User getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
     }
 
     @Override

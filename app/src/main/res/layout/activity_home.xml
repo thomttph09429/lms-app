@@ -18,10 +18,11 @@
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:id="@+id/navigation"
+
             android:background="?android:attr/windowBackground"
             android:foreground="?attr/selectableItemBackground"
-            app:itemIconTint="@color/red"
-            app:itemTextColor="@color/red"
+            app:itemIconTint="@color/primary_color"
+            app:itemTextColor="@color/primary_color"
             app:menu="@menu/drawer_menu"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

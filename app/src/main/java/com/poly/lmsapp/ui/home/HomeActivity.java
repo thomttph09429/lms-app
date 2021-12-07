@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,7 +16,7 @@ import com.poly.lmsapp.commons.utils.PersonSingleton;
 import com.poly.lmsapp.commons.utils.Utils;
 import com.poly.lmsapp.model.BaseResponse;
 import com.poly.lmsapp.model.User;
-import com.poly.lmsapp.ui.home.account.AccountFragment;
+import com.poly.lmsapp.ui.home.account2.AccountMenuFragment;
 import com.poly.lmsapp.ui.home.recent_class.RecentClassFragment;
 import com.poly.lmsapp.ui.home.repository.RepositoryFragment;
 import retrofit2.Call;
@@ -79,7 +78,7 @@ public class HomeActivity extends BaseActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.nav_account:
-                    fragment = AccountFragment.getInstance();
+                    fragment = AccountMenuFragment.getInstance();
                     loadFragment(fragment);
                     return true;
             }

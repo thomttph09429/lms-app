@@ -55,6 +55,9 @@ public class DetailAssignmentActivity extends BaseActivity {
     private int elementIndex = 0;
     private LinearLayout mViewBatDauLamBai;
     private LinearLayout mViewNutQuiz;
+    private TextView mTvPoint;
+    private TextView mTvNote;
+
 
     private ArrayList<Question> listData = new ArrayList<>();
     int point = 0;
@@ -178,7 +181,7 @@ public class DetailAssignmentActivity extends BaseActivity {
                         mViewKetQua.setVisibility(View.VISIBLE);
                         mViewCacCauHoi.setVisibility(View.GONE);
                         mViewNutQuiz.setVisibility(View.GONE);
-                        mTvKetQua.setText("Bạn đạt điểm: " + infoQuiz.getPoint() +" điểm");
+                        mTvKetQua.setText("Bạn đạt điểm: " + infoQuiz.getPoint() + " điểm");
                         //đang làm bài
                     } else if (baseResponse.getError().getCode() == 2) {
                         infoQuiz = (InfoQuiz) Utils.jsonDecode(baseResponse.getData(), InfoQuiz.class);
@@ -363,7 +366,8 @@ public class DetailAssignmentActivity extends BaseActivity {
         mViewCacCauHoi = findViewById(R.id.view_cac_cau_hoi);
         mTvThuTu = findViewById(R.id.tv_thu_tu);
         mTvCauHoi = findViewById(R.id.tv_cau_hoi);
-
+        mTvPoint = findViewById(R.id.tv_point);
+        mTvNote = findViewById(R.id.tv_note);
         mBtnPrev = findViewById(R.id.btn_prev);
         mBtnNext = findViewById(R.id.btn_next);
         mBtnFinish = findViewById(R.id.btn_finish);
@@ -391,10 +395,15 @@ public class DetailAssignmentActivity extends BaseActivity {
                     BasePageResponse basePageResponse = (BasePageResponse) Utils.jsonDecode(baseResponse.getData(), BasePageResponse.class);
                     ArrayList<FileAttach> fileAttaches = new ArrayList<>();
                     basePageResponse.getData().forEach(o -> {
-                        fileAttaches.add((FileAttach) Utils.jsonDecode(o, FileAttach.class));
+                        FileAttach fileAttach = (FileAttach) Utils.jsonDecode(o, FileAttach.class);
+                        fileAttaches.add(fileAttach);
+                        String s = fileAttach.getPoint() == 0 ? "Chưa có" : String.valueOf(fileAttach.getPoint());
+                        mTvPoint.setText(s);
+                        if (fileAttach.getNote() != null) {
+                            mTvNote.setText(fileAttach.getNote());
+                        }
                     });
-                    FileAttachAdapter fileAttachAdapter = new FileAttachAdapter(fileAttaches, R.layout.item_file_attach);
-                    mRvFile.setAdapter(fileAttachAdapter);
+
                     String time = DateTimeUtils.toDateFormat(assignment.getStartTime(), DateTimeUtils.SERVER_DATE_2, DateTimeUtils.TIME_DATE);
                     String etime = DateTimeUtils.toDateFormat(assignment.getEndTime(), DateTimeUtils.SERVER_DATE_2, DateTimeUtils.TIME_DATE);
 
@@ -413,6 +422,8 @@ public class DetailAssignmentActivity extends BaseActivity {
                         mTvTimeResult.setText("Đang diễn ra");
                         mTvTimeResult.setTextColor(getResources().getColor(R.color.green));
                     }
+                    FileAttachAdapter fileAttachAdapter = new FileAttachAdapter(fileAttaches, R.layout.item_file_attach, !DateTimeUtils.nowAfter(endDate));
+                    mRvFile.setAdapter(fileAttachAdapter);
                     visibleUploadFile(View.VISIBLE);
                     showLoading(false);
                 }
@@ -462,7 +473,7 @@ public class DetailAssignmentActivity extends BaseActivity {
             } else {
                 Utils.showToast(DetailAssignmentActivity.this, "Vui lòng chọn file có kích thước nhỏ hơn 5 MB");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
 
         }

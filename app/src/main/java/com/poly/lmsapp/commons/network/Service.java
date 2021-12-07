@@ -16,6 +16,9 @@ public interface Service {
     @GET("/api/info_user")
     Call<BaseResponse> getInfo();
 
+    @GET("/api/update_user")
+    Call<BaseResponse> updateUser(@Body User o);
+
     @POST("api/register")
     Call<BaseResponse> signUp(@Body User o);
 
@@ -92,10 +95,10 @@ public interface Service {
     @POST("/api/update_info_quiz")
     Call<BaseResponse> updateInfoQUiz(@Body InfoQuiz o);
 
-   @POST("/api/update_point_info_quiz")
+    @POST("/api/update_point_info_quiz")
     Call<BaseResponse> updatePointInfoQUiz(@Body InfoQuiz o);
 
-   @GET("/api/get_file_system")
+    @GET("/api/get_file_system")
     Call<BaseResponse> getAllFileSystem(@QueryMap Map<String, Object> map);
 
 }

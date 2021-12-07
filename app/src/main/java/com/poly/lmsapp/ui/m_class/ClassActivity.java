@@ -5,9 +5,6 @@ import android.os.Build;
 import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.poly.lmsapp.R;
@@ -22,7 +19,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -77,7 +73,7 @@ public class ClassActivity extends BaseActivity {
                     basePageResponse.getData().forEach(o -> {
                         listData.add((ClassModel) Utils.jsonDecode(o, ClassModel.class));
                     });
-                    ClassAdapter classAdapter = new ClassAdapter(listData, R.layout.item_subject);
+                    ClassAdapter classAdapter = new ClassAdapter(listData, R.layout.item_class);
                     mRvClass.setAdapter(classAdapter);
                     if (listData.size() == 0) mTvNoData.setVisibility(View.VISIBLE);
                     else mTvNoData.setVisibility(View.GONE);

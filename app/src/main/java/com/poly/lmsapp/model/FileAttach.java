@@ -1,5 +1,7 @@
 package com.poly.lmsapp.model;
 
+import com.poly.lmsapp.commons.utils.DateTimeUtils;
+
 public class FileAttach {
     private String _id;
     private String name;
@@ -11,7 +13,9 @@ public class FileAttach {
     private int idClass;
     private String data;
     private String createdAt;
+    private String note;
     private int createdBy;
+    private int point;
     private int id;
     private int __v;
 
@@ -102,6 +106,9 @@ public class FileAttach {
     }
 
     public String getCreatedAt() {
+        if(createdAt != null){
+            createdAt = DateTimeUtils.toDateFormat(createdAt,DateTimeUtils.SERVER_DATE,DateTimeUtils.TIME_DATE);
+        }
         return createdAt;
     }
 
@@ -131,5 +138,21 @@ public class FileAttach {
 
     public void set__v(int __v) {
         this.__v = __v;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 }

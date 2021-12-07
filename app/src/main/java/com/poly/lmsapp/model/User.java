@@ -24,17 +24,18 @@ public class User implements Parcelable {
     private String birth;
     @SerializedName("phoneNumber")
     private String phoneNumber;
-//    @SerializedName("chuyenNganh")
-//    private String chuyenNganh;
+    @SerializedName("chuyenNganh")
+    private Department chuyenNganh;
     @SerializedName("oldPassword")
     private String oldPassword;
     @SerializedName("newPassword")
     private String newPassword;
-//    @SerializedName("kiHoc")
-//    private String kiHoc;
+    @SerializedName("kiHoc")
+    private Semester kiHoc;
     @SerializedName("permission")
     private List<Permission> permission;
     private String fcmToken;
+    private String data;
     private int idGroup;
 
     public User(String oldPassword, String newPassword,int idGroup) {
@@ -43,22 +44,21 @@ public class User implements Parcelable {
         this.idGroup = idGroup;
     }
 
-//    public String getChuyenNganh() {
-//        return chuyenNganh;
-//    }
+    public Department getChuyenNganh() {
+        return chuyenNganh;
+    }
 
-//    public void setChuyenNganh(String chuyenNganh) {
-//        this.chuyenNganh = chuyenNganh;
-//    }
+    public void setChuyenNganh(Department chuyenNganh) {
+        this.chuyenNganh = chuyenNganh;
+    }
 
-//    public String getKiHoc() {
-//        return kiHoc;
-//    }
+    public Semester getKiHoc() {
+        return kiHoc;
+    }
 
-//    public void setKiHoc(String kiHoc) {
-//        this.kiHoc = kiHoc;
-//    }
-
+    public void setKiHoc(Semester kiHoc) {
+        this.kiHoc = kiHoc;
+    }
 
     protected User(Parcel in) {
         _id = in.readString();
@@ -123,13 +123,13 @@ public class User implements Parcelable {
         this.fcmToken = fcmToken;
     }
 
-    public User(String _id, String name, String userName, String email, List<Permission> permission, String token, int id) {
-        this._id = _id;
+    public User(String name, String email, String avatar, String birth, String phoneNumber, String data, int id) {
         this.name = name;
-        this.userName = userName;
         this.email = email;
-        this.permission = permission;
-        this.token = token;
+        this.avatar = avatar;
+        this.birth = birth;
+        this.phoneNumber = phoneNumber;
+        this.data = data;
         this.id = id;
     }
 

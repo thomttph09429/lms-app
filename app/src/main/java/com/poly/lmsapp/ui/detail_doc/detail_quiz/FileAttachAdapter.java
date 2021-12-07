@@ -9,7 +9,6 @@ import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.LMSAdapter;
 import com.poly.lmsapp.commons.network.Client;
-import com.poly.lmsapp.commons.resource.KeyResource;
 import com.poly.lmsapp.commons.utils.Utils;
 import com.poly.lmsapp.model.BaseResponse;
 import com.poly.lmsapp.model.FileAttach;
@@ -18,8 +17,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class FileAttachAdapter extends LMSAdapter {
     private SwipeRevealLayout mSrlLayout;
@@ -27,10 +24,12 @@ public class FileAttachAdapter extends LMSAdapter {
     private TextView mTvCreateTime;
     private ImageView mIvDelete;
     private CardView mContainer;
+    private boolean status;
 
 
-    public FileAttachAdapter(ArrayList listData, int layout) {
+    public FileAttachAdapter(ArrayList listData, int layout, boolean status) {
         super(listData, layout);
+        this.status = status;
     }
 
     @Override
@@ -51,26 +50,31 @@ public class FileAttachAdapter extends LMSAdapter {
         mContainer.setOnClickListener(view -> {
             Utils.lunchUrl((DetailAssignmentActivity) context, Utils.concatPath(fileAttach.getLink()));
         });
-        mIvDelete.setOnClickListener(view -> {
-            ((DetailAssignmentActivity) context).showLoading(true);
-            Client.getInstance().deleteFileAttach(new FileAttach(fileAttach.getId())).enqueue(new Callback<BaseResponse>() {
-                @Override
-                public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                    BaseResponse baseResponse = response.body();
-                    ((DetailAssignmentActivity) context).showLoading(false);
 
-                    if (baseResponse != null && baseResponse.getError().getCode() == 0) {
-                        ((DetailAssignmentActivity) context).fetchData();
+        mIvDelete.setOnClickListener(view -> {
+            if (status) {
+                ((DetailAssignmentActivity) context).showLoading(true);
+                Client.getInstance().deleteFileAttach(new FileAttach(fileAttach.getId())).enqueue(new Callback<BaseResponse>() {
+                    @Override
+                    public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                        BaseResponse baseResponse = response.body();
+                        ((DetailAssignmentActivity) context).showLoading(false);
+
+                        if (baseResponse != null && baseResponse.getError().getCode() == 0) {
+                            ((DetailAssignmentActivity) context).fetchData();
+                        }
                     }
 
+                    @Override
+                    public void onFailure(Call<BaseResponse> call, Throwable t) {
 
-                }
-
-                @Override
-                public void onFailure(Call<BaseResponse> call, Throwable t) {
-
-                }
-            });
+                    }
+                });
+            } else {
+                Utils.showToast((Activity) context, "Đã hết thời gian. Bạn không thể chỉnh sửa");
+            }
         });
+
+
     }
 }
