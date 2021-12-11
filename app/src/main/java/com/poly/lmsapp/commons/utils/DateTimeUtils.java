@@ -2,15 +2,14 @@ package com.poly.lmsapp.commons.utils;
 
 import android.annotation.SuppressLint;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 public class DateTimeUtils {
     //    "2021-11-14 16:03:47"
     public static final String SERVER_DATE = "yyyy/MM/dd HH:mm:ss";
     public static final String SERVER_DATE_2 = "dd/MM/yyyy HH:mm:ss";
+    public static final String BIRTH_DATE = "dd/MM/yyyy";
     public static final String TIME_DATE = "HH:mm dd/MM/yyyy";
 
     public static Date parseDate(String s, String pattern) {

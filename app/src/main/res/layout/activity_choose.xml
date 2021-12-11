@@ -28,6 +28,7 @@
                 android:layout_marginTop="@dimen/_30sdp"
                 android:fontFamily="@font/futuramedium"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="T E C H N F D"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_20sdp" />
@@ -35,6 +36,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:fontFamily="@font/futuramedium"
                 android:gravity="center"

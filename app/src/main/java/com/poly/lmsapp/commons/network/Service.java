@@ -16,7 +16,7 @@ public interface Service {
     @GET("/api/info_user")
     Call<BaseResponse> getInfo();
 
-    @GET("/api/update_user")
+    @POST("/api/update_user")
     Call<BaseResponse> updateUser(@Body User o);
 
     @POST("api/register")

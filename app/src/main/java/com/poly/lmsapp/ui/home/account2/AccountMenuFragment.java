@@ -24,12 +24,13 @@ public class AccountMenuFragment extends Fragment {
     private RecyclerView mRvMenu;
     private TextView tvName;
     private User user;
+    private static AccountMenuFragment accountMenuFragment;
 
     private ArrayList<MenuDraw> listMenu = new ArrayList<>();
 
     public static AccountMenuFragment getInstance() {
-        AccountMenuFragment fragment = new AccountMenuFragment();
-        return fragment;
+        if (accountMenuFragment == null) accountMenuFragment = new AccountMenuFragment();
+        return accountMenuFragment;
     }
 
     @Override
@@ -46,11 +47,11 @@ public class AccountMenuFragment extends Fragment {
 
         mIvAvatar = view.findViewById(R.id.iv_avatar);
         mRvMenu = view.findViewById(R.id.rv_menu);
-        tvName = view.findViewById(R.id.tv_name);
-        listMenu.add(new MenuDraw(R.drawable.ic_detail,"Thông tin tài khoản"));
-        listMenu.add(new MenuDraw(R.drawable.ic_update,"Cập nhật thông tin tài khoản"));
-        listMenu.add(new MenuDraw(R.drawable.ic_password,"Đổi mật khẩu"));
-        listMenu.add(new MenuDraw(R.drawable.ic_exit,"Đăng xuất"));
+        tvName = view.findViewById(R.id.tv_name);listMenu.clear();
+        listMenu.add(new MenuDraw(R.drawable.ic_detail, "Thông tin tài khoản"));
+        listMenu.add(new MenuDraw(R.drawable.ic_update, "Cập nhật thông tin tài khoản"));
+        listMenu.add(new MenuDraw(R.drawable.ic_password, "Đổi mật khẩu"));
+        listMenu.add(new MenuDraw(R.drawable.ic_exit, "Đăng xuất"));
         user = PersonSingleton.getInstance().getUser();
         if (user != null) {
             tvName.setText(user.getName());
@@ -65,5 +66,21 @@ public class AccountMenuFragment extends Fragment {
         AccountMenuAdapter accountMenuAdapter = new AccountMenuAdapter(listMenu, R.layout.item_account_menu);
 //        mRvMenu.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         mRvMenu.setAdapter(accountMenuAdapter);
+    }
+
+    public TextView getTvName() {
+        return tvName;
+    }
+
+    public void setTvName(TextView tvName) {
+        this.tvName = tvName;
+    }
+
+    public ImageView getmIvAvatar() {
+        return mIvAvatar;
+    }
+
+    public void setmIvAvatar(ImageView mIvAvatar) {
+        this.mIvAvatar = mIvAvatar;
     }
 }

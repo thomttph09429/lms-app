@@ -30,6 +30,7 @@
                            android:src="@drawable/ic_user_default"
                            android:background="@drawable/bg_radious"
                            android:layout_height="@dimen/_80sdp"
+                           android:scaleType="centerCrop"
                            app:layout_constraintEnd_toEndOf="parent"
                            app:layout_constraintStart_toStartOf="parent"
                            app:layout_constraintHorizontal_bias="0.5"
@@ -40,7 +41,7 @@
                            android:layout_height="@dimen/_20sdp"
                            android:background="@drawable/bg_radious"
                            android:id="@+id/iv_pick_avatar"
-                           android:src="@drawable/ic_camera"
+                           android:src="@drawable/ic_camera1"
                            app:layout_constraintEnd_toEndOf="parent"
                            app:layout_constraintBottom_toBottomOf="parent"
                            android:layout_marginEnd="8dp"
@@ -49,7 +50,8 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
-                                                                   android:layout_marginTop="@dimen/_12sdp"
+                                                                   android:layout_marginTop="@dimen/_8sdp"
+
                                                                    android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
                                                                          android:hint="Họ và tên"
@@ -57,7 +59,8 @@
                                                                          android:id="@+id/edt_name"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
-                                                                   android:layout_marginTop="@dimen/_12sdp"
+                                                                   android:layout_marginTop="@dimen/_8sdp"
+
 
                                                                    android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
@@ -66,7 +69,8 @@
                                                                          android:id="@+id/edt_email"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
-                                                                   android:layout_marginTop="@dimen/_12sdp"
+                                                                   android:layout_marginTop="@dimen/_8sdp"
+
 
                                                                    android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
@@ -75,14 +79,37 @@
                                                                          android:id="@+id/edt_phone_number"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
-                                                                   android:layout_marginTop="@dimen/_12sdp"
+                                                                   android:layout_marginTop="@dimen/_8sdp"
 
                                                                    android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
+                                                                         android:enabled="false"
                                                                          android:hint="Ngày sinh"
                                                                          android:layout_height="wrap_content"
                                                                          android:id="@+id/edt_birth"/>
             </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent"
+                                                                   android:layout_marginTop="@dimen/_8sdp"
+
+
+                                                                   android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
+
+                                                                         android:hint="Địa chỉ"
+                                                                         android:layout_height="wrap_content"
+                                                                         android:id="@+id/edt_address"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="@dimen/_12sdp"
+                      android:layout_marginLeft="@dimen/_2sdp"
+                      android:textSize="@dimen/_8sdp"
+                      android:text="Giới tính"/>
+            <Spinner android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                     android:paddingVertical="@dimen/_16sdp"
+                     android:id="@+id/spn_gender"/>
 
         </LinearLayout>
     </ScrollView>
@@ -96,7 +123,7 @@
             android:paddingVertical="0dp"
             android:textAllCaps="false"
             android:background="@drawable/btn_click"
-            android:text="Chọn file"
+            android:text="Cập nhật"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/btn_prev"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -17,6 +17,8 @@
                android:layout_height="@dimen/_80sdp"
                app:layout_constraintTop_toTopOf="parent"
                android:layout_marginTop="52dp"
+               app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Avatar"
+
                android:background="@drawable/bg_radious"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"

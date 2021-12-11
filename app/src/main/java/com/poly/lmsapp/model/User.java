@@ -36,7 +36,11 @@ public class User implements Parcelable {
     private List<Permission> permission;
     private String fcmToken;
     private String data;
+    private String gender;
+    private String address;
     private int idGroup;
+    private int chuyenNganhId;
+    private int kiHocId;
 
     public User(String oldPassword, String newPassword,int idGroup) {
         this.oldPassword = oldPassword;
@@ -123,7 +127,7 @@ public class User implements Parcelable {
         this.fcmToken = fcmToken;
     }
 
-    public User(String name, String email, String avatar, String birth, String phoneNumber, String data, int id) {
+    public User(String name, String email, String avatar,String address, String birth, String phoneNumber, String data, int id,int idGroup,String gender,int chuyenNganhId,int kiHocId) {
         this.name = name;
         this.email = email;
         this.avatar = avatar;
@@ -131,6 +135,11 @@ public class User implements Parcelable {
         this.phoneNumber = phoneNumber;
         this.data = data;
         this.id = id;
+        this.idGroup = idGroup;
+        this.gender = gender;
+        this.chuyenNganhId = chuyenNganhId;
+        this.kiHocId = kiHocId;
+        this.address = address;
     }
 
     public String get_id() {
@@ -240,5 +249,55 @@ public class User implements Parcelable {
 
     public void setFcmToken(String fcmToken) {
         this.fcmToken = fcmToken;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public int getIdGroup() {
+        return idGroup;
+    }
+
+    public void setIdGroup(int idGroup) {
+        this.idGroup = idGroup;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public int getChuyenNganhId() {
+        return chuyenNganhId;
+    }
+
+    public void setChuyenNganhId(int chuyenNganhId) {
+        this.chuyenNganhId = chuyenNganhId;
+    }
+
+    public int getKiHocId() {
+        return kiHocId;
+    }
+
+    public void setKiHocId(int kiHocId) {
+        this.kiHocId = kiHocId;
+    }
+
+    public void setGender(String gender) {
+        this.gender =
+
+                gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

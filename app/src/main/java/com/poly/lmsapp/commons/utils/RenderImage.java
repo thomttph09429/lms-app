@@ -1,6 +1,7 @@
 package com.poly.lmsapp.commons.utils;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.widget.ImageView;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 import com.poly.lmsapp.R;
@@ -15,6 +16,16 @@ public class RenderImage {
        progress.setStrokeWidth(4f);
        progress.start();
        if(path == null || path.isEmpty()) path = "https://abc.com";
-        Picasso.get().load(Utils.concatPath(path)).placeholder(progress).error(R.drawable.ic_404).into(imageView);
+        Picasso.get().load(Utils.concatPath(path)).placeholder(progress).error(R.drawable.ic_404).transform(new RoundCornersTransform(1000)).into(imageView);
+    }
+
+    public static void loadImageUri(Uri path, ImageView imageView){
+       CircularProgressDrawable progress = new CircularProgressDrawable(imageView.getContext());
+       progress.setColorSchemeColors(R.color.primary_color, R.color.colorPrimaryDark, R.color.colorAccent);
+       progress.setCenterRadius(30f);
+       progress.setStrokeWidth(4f);
+       progress.start();
+
+        Picasso.get().load(path).placeholder(progress).error(R.drawable.ic_404).transform(new RoundCornersTransform(1000)).into(imageView);
     }
 }

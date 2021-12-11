@@ -61,7 +61,7 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
             } else {
                 mine = "application";
             }
-            String sBase64 = "data:" + mine + "/" + extension + ";base64," + Base64.encodeToString(data,Base64.DEFAULT);
+            String sBase64 = "data:" + mine + "/" + extension + ";base64," + Base64.encodeToString(data, Base64.DEFAULT);
             Log.d("Base64", "convertBase64: " + sBase64);
             return sBase64;
 
@@ -80,7 +80,7 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
 
     }
 
-    public static String convertBase64FromUri(Activity activity,Uri filePickedUri) {
+    public static String convertBase64FromUri(Activity activity, Uri filePickedUri) {
         try {
 //           activity.getContentResolver().openInputStream(filePickedUri).re;
 //
@@ -107,7 +107,7 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
             } else {
                 mine = "application";
             }
-            String sBase64 = "data:" + mine + "/" + extension + ";base64," + Base64.encodeToString(data,Base64.DEFAULT);
+            String sBase64 = "data:" + mine + "/" + extension + ";base64," + Base64.encodeToString(data, Base64.DEFAULT);
             Log.d("Base64", "convertBase64: " + sBase64);
             return sBase64;
 
@@ -157,10 +157,11 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
 
         if (resultCode == Activity.RESULT_OK && data != null) {
 
-            uploadFileUri = data.getData();                    file = new File(uploadFileUri.getPath());
-            Log.e("AAAAAAa", "callBackPicker: "+ getFullPathFromContentUri(uploadFileUri));
-            if(uploadFileUri != null){
-                if(getFullPathFromContentUri(uploadFileUri) != null){
+            uploadFileUri = data.getData();
+            file = new File(uploadFileUri.getPath());
+            Log.e("AAAAAAa", "callBackPicker: " + getFullPathFromContentUri(uploadFileUri));
+            if (uploadFileUri != null) {
+                if (getFullPathFromContentUri(uploadFileUri) != null) {
                     file = new File(getFullPathFromContentUri(uploadFileUri));
                     path = getFullPathFromContentUri(uploadFileUri);
                     Log.d("Callbackpicker: ", "callBackPicker: " + getFullPathFromContentUri(uploadFileUri));
@@ -264,7 +265,7 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
 
                 try {
 
-                    cursor =activity.getApplicationContext().getContentResolver().query(uri, projection, selection, selectionArgs, null);
+                    cursor = activity.getApplicationContext().getContentResolver().query(uri, projection, selection, selectionArgs, null);
 
                     if (cursor != null && cursor.moveToFirst()) {
 //                        final int column_index = cursor.getColumnIndex(MediaStore.MediaColumns.DATA);

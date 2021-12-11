@@ -33,6 +33,8 @@ public class AccountActivity extends BaseActivity {
     private ConstraintLayout parentLoading;
     private static Bundle bundle;
     private User user;
+    private TextView mTvGender;
+    private TextView mTvAddress;
 
     @Override
     public void setLayout() {
@@ -55,7 +57,9 @@ public class AccountActivity extends BaseActivity {
         tvBirth = findViewById(R.id.tv_birth);
         tvKiHoc = findViewById(R.id.tv_ki_hoc);
         tvChuyenNganh = findViewById(R.id.tv_chuyen_nganh);
-        parentLoading = findViewById(R.id.parent_loading);
+        parentLoading = findViewById(R.id.parent_loading);    mTvGender = findViewById(R.id.tv_gender);
+        mTvAddress = findViewById(R.id.tv_address);
+
     }
 
     public void fetchData() {
@@ -83,6 +87,8 @@ public class AccountActivity extends BaseActivity {
                         semester = user.getKiHoc().getName();
                     }
                     tvKiHoc.setText(semester);
+                    mTvGender.setText(user.getGender());
+                    mTvAddress.setText(user.getAddress());
                     RenderImage.loadImageNetwork(user.getAvatar(), ivAvatar);
                 } else {
                     if (baseResponse != null)

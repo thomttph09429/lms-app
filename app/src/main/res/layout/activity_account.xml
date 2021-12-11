@@ -20,11 +20,13 @@
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintHorizontal_bias="0.498"
                android:id="@+id/iv_avatar"
+               app:shapeAppearance="@style/ShapeAppearanceOverlay.Avatar"
+
                app:layout_constraintTop_toBottomOf="@+id/include2"
                android:layout_marginTop="8dp"/>
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Name"
+              android:text=""
               android:textSize="@dimen/_16sdp"
               android:textColor="@color/black"
               android:layout_marginTop="8dp"
@@ -48,16 +50,17 @@
                       android:layout_height="wrap_content">
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
+                      android:textSize="@dimen/_8sdp"
 
-                      android:textColor="@color/black"
+
                       android:layout_weight="1"
                       android:text="Email"/>
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
 
-
+                      android:textColor="@color/black"
                       android:layout_weight="2"
-                      android:text="manhtai831@gmail.com"
+                      android:text=""
                       android:id="@+id/tv_email"/>
 
         </LinearLayout>
@@ -71,14 +74,14 @@
                       android:layout_height="wrap_content">
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-                      android:textColor="@color/black"
+                      android:textSize="@dimen/_8sdp"
                       android:layout_weight="1"
                       android:text="Số điện thoại"/>
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-
+                      android:textColor="@color/black"
                       android:layout_weight="2"
-                      android:text="0943574556"
+                      android:text=""
                       android:id="@+id/tv_phone_number"/>
 
         </LinearLayout>
@@ -92,15 +95,15 @@
                       android:layout_height="wrap_content">
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
+                      android:textSize="@dimen/_8sdp"
 
-                      android:textColor="@color/black"
                       android:layout_weight="1"
                       android:text="Ngày sinh"/>
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-
+                      android:textColor="@color/black"
                       android:layout_weight="2"
-                      android:text="19/02/2001"
+                      android:text=""
                       android:id="@+id/tv_birth"/>
 
         </LinearLayout>
@@ -114,15 +117,59 @@
                       android:layout_height="wrap_content">
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
+                      android:textSize="@dimen/_8sdp"
 
+                      android:layout_weight="1"
+                      android:text="Giới tính"/>
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
                       android:textColor="@color/black"
+                      android:layout_weight="2"
+                      android:text=""
+                      android:id="@+id/tv_gender"/>
+
+        </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginTop="@dimen/_5sdp"
+              android:background="@color/grey"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_marginTop="@dimen/_8sdp"
+                      android:orientation="horizontal"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:textSize="@dimen/_8sdp"
+
+                      android:layout_weight="1"
+                      android:text="Địa chỉ"/>
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:textColor="@color/black"
+                      android:layout_weight="2"
+                      android:text=""
+                      android:id="@+id/tv_address"/>
+
+        </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:layout_marginTop="@dimen/_5sdp"
+              android:background="@color/grey"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_marginTop="@dimen/_8sdp"
+                      android:orientation="horizontal"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:textSize="@dimen/_8sdp"
+
                       android:layout_weight="1"
                       android:text="Học kì"/>
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-
+                      android:textColor="@color/black"
                       android:layout_weight="2"
-                      android:text="Summer 2021"
+                      android:text=""
                       android:id="@+id/tv_ki_hoc"/>
 
         </LinearLayout>
@@ -136,18 +183,26 @@
                       android:layout_height="wrap_content">
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
+                      android:textSize="@dimen/_8sdp"
 
-                      android:textColor="@color/black"
                       android:layout_weight="1"
                       android:text="Chuyên ngành"/>
             <TextView android:layout_width="0dp"
                       android:layout_height="wrap_content"
-
+                      android:textColor="@color/black"
                       android:layout_weight="2"
-                      android:text="Lập trình mobile"
+                      android:text=""
                       android:id="@+id/tv_chuyen_nganh"/>
 
         </LinearLayout>
     </LinearLayout>
+    <include layout="@layout/loading"
+             android:layout_width="match_parent"
 
+             android:layout_height="match_parent"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintHorizontal_bias="0.5"
+             app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
