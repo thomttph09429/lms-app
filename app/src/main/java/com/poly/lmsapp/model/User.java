@@ -42,10 +42,14 @@ public class User implements Parcelable {
     private int chuyenNganhId;
     private int kiHocId;
 
-    public User(String oldPassword, String newPassword,int idGroup) {
+    public User(String oldPassword, String newPassword,int idGroup,int address) {
         this.oldPassword = oldPassword;
         this.newPassword = newPassword;
         this.idGroup = idGroup;
+    }
+   public User(String userName, String password,int idGroup,String address,String email) {
+        this.userName = userName;
+        this.password = password;
     }
 
     public Department getChuyenNganh() {

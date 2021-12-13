@@ -1,6 +1,7 @@
 package com.poly.lmsapp.ui.activity;
 
 import android.content.Intent;
+import android.util.Log;
 import com.poly.lmsapp.R;
 import com.poly.lmsapp.commons.base.BaseActivity;
 import com.poly.lmsapp.commons.local.LocalManager;
@@ -25,6 +26,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void createView() {
+        Log.d("FCM TOKENNNNNNNNNNNNNNN", LocalManager.getInstance(SplashActivity.this).getString(KeyResource.FCM_TOKEN));
         StringResource.token = LocalManager.getInstance(SplashActivity.this).getString(KeyResource.TOKEN);
         if (!LocalManager.getInstance(SplashActivity.this).getString(KeyResource.TOKEN).equals("")) {
             fetchData();

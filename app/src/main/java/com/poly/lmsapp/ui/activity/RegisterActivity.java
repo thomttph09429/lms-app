@@ -14,6 +14,7 @@ import com.poly.lmsapp.commons.base.BaseDialog;
 import com.poly.lmsapp.commons.network.Client;
 import com.poly.lmsapp.commons.resource.KeyResource;
 import com.poly.lmsapp.commons.utils.Status;
+import com.poly.lmsapp.commons.utils.Utils;
 import com.poly.lmsapp.model.BaseResponse;
 import com.poly.lmsapp.model.User;
 import retrofit2.Call;
@@ -202,13 +203,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private void signIn() {
         if(checkValidate()){
             showLoading(true);
-            User user = new User(edtName.getText().toString().trim(), edtPassword.getText().toString().trim(),13);
+            User user = new User(edtName.getText().toString().trim(), edtPassword.getText().toString().trim(),-1,"","");
             Client.getInstance().signUp(user).enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                     BaseResponse baseResponse = response.body();
                     if (baseResponse != null && baseResponse.getError().getCode() == 0) {
                         showLoading(false);
+                        Utils.showToast(RegisterActivity.this,"Đăng ký thành công");
                         finish();
                     } else {
                         showLoading(false);

@@ -73,9 +73,9 @@ public class UpdateAccountActivity extends BaseActivity {
             new DatePickerDialog(UpdateAccountActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
+                    mEdtBirth.setText(i2+"/" + i1 + "/" + i);
                 }
-            }, finalYear, finalMonth, finalDay);
+            }, finalYear, finalMonth, finalDay).show();
         });
         ArrayList<String> listGender = new ArrayList<>();
         listGender.add("Nam");

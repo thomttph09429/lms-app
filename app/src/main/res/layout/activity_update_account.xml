@@ -83,7 +83,6 @@
 
                                                                    android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
-                                                                         android:enabled="false"
                                                                          android:hint="Ngày sinh"
                                                                          android:layout_height="wrap_content"
                                                                          android:id="@+id/edt_birth"/>
