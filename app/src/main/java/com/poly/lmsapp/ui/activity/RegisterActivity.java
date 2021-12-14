@@ -203,7 +203,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private void signIn() {
         if(checkValidate()){
             showLoading(true);
-            User user = new User(edtName.getText().toString().trim(), edtPassword.getText().toString().trim(),-1,"","");
+            User user = new User(edtName.getText().toString().trim(), edtPassword.getText().toString().trim(),13,"","");
             Client.getInstance().signUp(user).enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

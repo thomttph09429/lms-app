@@ -42,14 +42,17 @@ public class User implements Parcelable {
     private int chuyenNganhId;
     private int kiHocId;
 
-    public User(String oldPassword, String newPassword,int idGroup,int address) {
+    public User(String oldPassword, String newPassword, int idGroup, int address) {
         this.oldPassword = oldPassword;
         this.newPassword = newPassword;
         this.idGroup = idGroup;
     }
-   public User(String userName, String password,int idGroup,String address,String email) {
+
+    public User(String userName, String password, int idGroup, String address, String email) {
         this.userName = userName;
         this.password = password;
+        this.idGroup = idGroup;
+        this.email = email;
     }
 
     public Department getChuyenNganh() {
@@ -125,13 +128,13 @@ public class User implements Parcelable {
     public User() {
     }
 
-    public User(String userName, String password,String fcmToken) {
+    public User(String userName, String password, String fcmToken) {
         this.userName = userName;
         this.password = password;
         this.fcmToken = fcmToken;
     }
 
-    public User(String name, String email, String avatar,String address, String birth, String phoneNumber, String data, int id,int idGroup,String gender,int chuyenNganhId,int kiHocId) {
+    public User(String name, String email, String avatar, String address, String birth, String phoneNumber, String data, int id, int idGroup, String gender, int chuyenNganhId, int kiHocId) {
         this.name = name;
         this.email = email;
         this.avatar = avatar;
