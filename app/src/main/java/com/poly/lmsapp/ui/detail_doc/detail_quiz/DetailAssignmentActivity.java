@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
@@ -441,8 +442,16 @@ public class DetailAssignmentActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        FilePicker.callBackPicker(requestCode, resultCode, data);
-        uploadFile();
+
+        if (resultCode == RESULT_OK) {
+            if (Environment.isExternalStorageManager()) {
+                FilePicker.callBackPicker(requestCode, resultCode, data);
+                uploadFile();
+            }
+
+        }
+
+
     }
 
     private void uploadFile() {
@@ -488,4 +497,6 @@ public class DetailAssignmentActivity extends BaseActivity {
         mTvSchedule.setVisibility(visible);
         mTvSubmission.setVisibility(visible);
     }
+
+
 }

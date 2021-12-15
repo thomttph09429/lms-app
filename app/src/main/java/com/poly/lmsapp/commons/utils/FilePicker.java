@@ -9,9 +9,11 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import androidx.annotation.NonNull;
+import com.poly.lmsapp.BuildConfig;
 import droidninja.filepicker.FilePickerConst;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -31,6 +33,7 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
     private static Activity activity;
     private static final int gallery = 12;
     private static final int fileRequestCode = 13;
+    public static final int PERMISSTION_MANAGE_EXTERNAL_STORAGE = 100;
     private static final String type = "image/*";
     private static final String allType = "*/*";
 
@@ -139,16 +142,15 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
     }
 
     public static void showFilePicker() {
-        if (EasyPermissions.hasPermissions(activity, FilePickerConst.PERMISSIONS_FILE_PICKER)) {
+        if (Environment.isExternalStorageManager()) {
             final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//            final Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType("*/*");
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             activity.startActivityForResult(Intent.createChooser(intent, "select file"), gallery);
         } else {
-            // Ask for one permission
-            EasyPermissions.requestPermissions(activity, "Vui lòng cấp quyền để upload file",
-                    fileRequestCode, FilePickerConst.PERMISSIONS_FILE_PICKER);
+            Uri uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
+            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri);
+            activity.startActivity(intent);
         }
 
     }
