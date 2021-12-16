@@ -142,16 +142,29 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
     }
 
     public static void showFilePicker() {
-        if (Environment.isExternalStorageManager()) {
-            final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setType("*/*");
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
-            activity.startActivityForResult(Intent.createChooser(intent, "select file"), gallery);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (Environment.isExternalStorageManager()) {
+                final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                activity.startActivityForResult(Intent.createChooser(intent, "select file"), gallery);
+            } else {
+                Uri uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri);
+                activity.startActivity(intent);
+            }
         } else {
-            Uri uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
-            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri);
-            activity.startActivity(intent);
+            if (EasyPermissions.hasPermissions(activity, FilePickerConst.PERMISSIONS_FILE_PICKER)) {
+                final Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                activity.startActivityForResult(Intent.createChooser(intent, "select file"), gallery);
+            } else {
+                EasyPermissions.requestPermissions(activity, "Vui lòng cấp quyền để upload file",
+                        gallery, FilePickerConst.PERMISSIONS_FILE_PICKER);
+            }
         }
+
 
     }
 
@@ -274,6 +287,8 @@ public class FilePicker implements EasyPermissions.PermissionCallbacks {
                         final int column_index = cursor.getColumnIndex("_data");
                         return cursor.getString(column_index);
                     }
+                } catch (Exception e) {
+                    Log.e("Content provider error", "getFullPathFromContentUri: " + e);
                 } finally {
                     if (cursor != null)
                         cursor.close();

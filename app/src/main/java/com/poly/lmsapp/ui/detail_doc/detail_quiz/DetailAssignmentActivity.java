@@ -444,10 +444,16 @@ public class DetailAssignmentActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            if (Environment.isExternalStorageManager()) {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+                if (Environment.isExternalStorageManager()) {
+                    FilePicker.callBackPicker(requestCode, resultCode, data);
+                    uploadFile();
+                }
+            }else{
                 FilePicker.callBackPicker(requestCode, resultCode, data);
                 uploadFile();
             }
+
 
         }
 
